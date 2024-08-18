@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { MdAnalytics } from "react-icons/md";
 import {
@@ -6,20 +6,17 @@ import {
   HiOutlineCodeBracketSquare,
   HiOutlineTrash,
 } from "react-icons/hi2";
-import { Table } from "@tanstack/react-table"
+import { Table } from "@tanstack/react-table";
 
-import { Button } from "../ui/button"
-import { Input } from "../ui/input"
-import { DataTableViewOptions } from "./data-table-view-options"
+import { Button } from "../ui/button";
+import { Input } from "../ui/input";
+import { DataTableViewOptions } from "./data-table-view-options";
 
-import { priorities, statuses } from "./data/data"
-import { DataTableFacetedFilter } from "./data-table-faceted-filter"
+import { priorities, statuses } from "../../app/pelamar/data/data";
+import { DataTableFacetedFilter } from "./data-table-faceted-filter";
 
-
-export function DataTableToolbar({
-  table,
-}) {
-  const isFiltered = table.getState().columnFilters.length > 0
+export function DataTableToolbar({ table }) {
+  const isFiltered = table.getState().columnFilters.length > 0;
 
   return (
     <div className="flex items-center justify-between">

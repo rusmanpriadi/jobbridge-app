@@ -1,10 +1,9 @@
 import { promises as fs } from "fs";
-import { data } from "@/components/table/data-table";
-import { z } from "zod"
-import path from "path"
-import { columns } from "@/components/table/column"
-import { DataTable } from "@/components/table/data-table"
-import { taskSchema } from "@/components/table/data/schema"
+import { z } from "zod";
+import path from "path";
+import { columns } from "./column";
+import { DataTable } from "../../components/table/data-table";
+import { taskSchema } from "./data/schema";
 import React from "react";
 export const metadata = {
   title: "Pelamar",
@@ -14,18 +13,18 @@ export const metadata = {
 // Simulate a database read for tasks.
 async function getTasks() {
   const data = await fs.readFile(
-    path.join(process.cwd(), "src/components/table/data/tasks.json")
+    path.join(process.cwd(), "src/app/pelamar/data/tasks.json")
   );
 
-  const tasks = JSON.parse(data.toString())
+  const tasks = JSON.parse(data.toString());
 
-  return z.array(taskSchema).parse(tasks)
+  return z.array(taskSchema).parse(tasks);
 }
 const Pelamar = async () => {
-    const tasks = await getTasks()
+  const tasks = await getTasks();
   return (
     <div>
-       <DataTable data={tasks} columns={columns} />
+      <DataTable data={tasks} columns={columns} />
     </div>
   );
 };

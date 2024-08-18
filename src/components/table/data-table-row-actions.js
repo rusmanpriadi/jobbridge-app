@@ -1,10 +1,9 @@
-"use client"
-
+"use client";
 
 import { HiEllipsisHorizontal } from "react-icons/hi2";
-import { Row } from "@tanstack/react-table"
+import { Row } from "@tanstack/react-table";
 
-import { Button } from "../ui/button"
+import { Button } from "../ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,16 +16,13 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "../ui/dropdown-menu"
+} from "../ui/dropdown-menu";
 
-import { labels } from "./data/data"
-import { taskSchema } from "./data/schema"
+import { labels } from "../../app/pelamar/data/data";
+import { taskSchema } from "../../app/pelamar/data/schema";
 
-
-export function DataTableRowActions({
-  row,
-}) {
-  const task = taskSchema.parse(row.original)
+export function DataTableRowActions({ row }) {
+  const task = taskSchema.parse(row.original);
 
   return (
     <DropdownMenu>

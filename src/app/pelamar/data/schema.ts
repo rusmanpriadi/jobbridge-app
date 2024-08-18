@@ -7,6 +7,8 @@ export const taskSchema = z.object({
   title: z.string(),
   email: z.string(),
   status: z.string(),
+  apply: z.string(),
+  phone: z.string(),
   label: z.string(),
   priority: z.string(),
 })

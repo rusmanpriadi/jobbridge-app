@@ -3,7 +3,7 @@
 import React from "react";
 import ClickOutside from "../layout/ClickOutside";
 import SidebarData from "./SidebarData";
-import useLocalStorage from "@/hooks/useLocalStorage";
+import useLocalStorage from "../../hooks/useLocalStorage";
 import SidebarItem from "./SidebarItem";
 import Link from "next/link";
 import { MdAnalytics } from "react-icons/md";
@@ -23,7 +23,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
   return (
     <ClickOutside onClick={() => setSidebarOpen(false)}>
       <aside
-        className={`absolute left-0 top-0 z-50 flex h-screen w-[240px] flex-col overflow-y-hidden border-r border-stroke bg-muted/40 bg-slate-100 lg:static lg:translate-x-0  ${
+        className={`absolute left-0 top-0 z-50 flex h-screen w-[220px] flex-col overflow-y-hidden border-r border-stroke bg-muted/40 bg-slate-100 lg:static lg:translate-x-0  ${
           sidebarOpen
             ? "translate-x-0 duration-300 ease-linear"
             : "-translate-x-full"

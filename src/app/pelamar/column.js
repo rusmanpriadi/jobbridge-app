@@ -2,13 +2,13 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 
-import { Badge } from "../ui/badge";
-import { Checkbox } from "../ui/checkbox";
+import { Badge } from "../../components/ui/badge";
+import { Checkbox } from "../../components/ui/checkbox";
 
 import { labels, priorities, statuses } from "./data/data";
 import { Task } from "./data/schema";
-import { DataTableColumnHeader } from "./data-table-column-header";
-import { DataTableRowActions } from "./data-table-row-actions";
+import { DataTableColumnHeader } from "../../components/table/data-table-column-header";
+import { DataTableRowActions } from "../../components/table/data-table-row-actions";
 
 export const columns = [
   {
@@ -47,8 +47,8 @@ export const columns = [
     cell: ({ row }) => (
       <div className="w-[70px] truncate font-medium">{row.getValue("id")}</div>
     ),
-    enableSorting: false,
-    enableHiding: false,
+    enableSorting: true,
+    enableHiding: true,
   },
   {
     accessorKey: "title",
@@ -79,44 +79,8 @@ export const columns = [
       return (
         <div className="flex space-x-2">
           {/* {label && <Badge variant="outline">{label.label}</Badge>} */}
-          <span className="max-w-[150px] truncate font-medium">
+          <span className="max-w-[160px] truncate font-semibold text-bluet">
             {row.getValue("email")}
-          </span>
-        </div>
-      );
-    },
-  },
-  {
-    accessorKey: "phone",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Phone" />
-    ),
-    cell: ({ row }) => {
-      const label = labels.find((label) => label.value === row.original.label);
-
-      return (
-        <div className="flex space-x-2">
-          {/* {label && <Badge variant="outline">{label.label}</Badge>} */}
-          <span className="max-w-[150px] truncate font-medium">
-            {row.getValue("phone")}
-          </span>
-        </div>
-      );
-    },
-  },
-  {
-    accessorKey: "apply",
-    header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Tgl.Appy" />
-    ),
-    cell: ({ row }) => {
-      const label = labels.find((label) => label.value === row.original.label);
-
-      return (
-        <div className="flex space-x-2">
-          {/* {label && <Badge variant="outline">{label.label}</Badge>} */}
-          <span className="max-w-[150px] truncate font-medium">
-            {row.getValue("apply")}
           </span>
         </div>
       );
@@ -137,18 +101,59 @@ export const columns = [
       }
 
       return (
-        <div className=" w-[150px] ">
-          <div className="flex items-center ">
-            {status.icon && (
-              <status.icon className="mr-2 h-4 w-4 text-slate-800" />
-            )}
-            <span>{status.label}</span>
+        <div className=" max-w-[150px] ">
+          <div className="flex items-center w-full ">
+            <section className="bg-slate-100 flex items-center px-2 py-1 rounded-full text-[10px]">
+              {status.icon && (
+                <status.icon className="mr-2 h-3 w-3 text-slate-800" />
+              )}
+              <span className="text-slate-900 font-semibold ">
+                {status.label}
+              </span>
+            </section>
           </div>
         </div>
       );
     },
     filterFn: (row, id, value) => {
       return value.includes(row.getValue(id));
+    },
+  },
+  {
+    accessorKey: "phone",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Phone" />
+    ),
+    cell: ({ row }) => {
+      const label = labels.find((label) => label.value === row.original.label);
+
+      return (
+        <div className="flex space-x-2">
+          {/* {label && <Badge variant="outline">{label.label}</Badge>} */}
+          <span className="max-w-[120px] truncate font-medium font-semibold text-[12px] text-bluet">
+            {row.getValue("phone")}
+          </span>
+        </div>
+      );
+    },
+  },
+
+  {
+    accessorKey: "apply",
+    header: ({ column }) => (
+      <DataTableColumnHeader column={column} title="Tgl.Appy" />
+    ),
+    cell: ({ row }) => {
+      const label = labels.find((label) => label.value === row.original.label);
+
+      return (
+        <div className="flex space-x-2">
+          {/* {label && <Badge variant="outline">{label.label}</Badge>} */}
+          <span className="max-w-[120px] truncate font-medium">
+            {row.getValue("apply")}
+          </span>
+        </div>
+      );
     },
   },
   {
@@ -167,10 +172,14 @@ export const columns = [
 
       return (
         <div className="flex items-center">
-          {priority.icon && (
-            <priority.icon className="mr-2 h-4 w-4 text-muted-foreground text-xs" />
-          )}
-          <span>{priority.label}</span>
+          <div className="flex items-center w-full ">
+            <section
+              className={`${priority.color} flex items-center px-2 py-1 rounded-full  text-[10px] font-semibold`}
+            >
+              {priority.icon && <priority.icon className=" mr-1 h-3 w-3" />}
+              <span className="text-[10px]">{priority.label}</span>
+            </section>
+          </div>
         </div>
       );
     },

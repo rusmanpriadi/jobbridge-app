@@ -8,7 +8,7 @@ import {
   HiOutlineEyeSlash,
 } from "react-icons/hi2";
 
-import { cn } from "@/lib/utils"
+import { cn } from "../../lib/utils";
 import { Button } from "../ui/button"
 import {
   DropdownMenu,

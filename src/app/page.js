@@ -18,8 +18,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { Button } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
+import { Separator } from "../components/ui/separator";
 import {
   Card,
   CardContent,
@@ -29,12 +28,12 @@ import {
   CardFooter,
   CardActions,
   CardSeparator,
-} from "@/components/ui/card";
+} from "../components/ui/card";
 import {
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from "@/components/ui/chart";
+} from "../components/ui/chart";
 import { HiBars3 } from "react-icons/hi2";
 
 // export const metadata = {

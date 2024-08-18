@@ -1,10 +1,11 @@
 import * as React from "react";
 
 import { MdAnalytics } from "react-icons/md";
+import { HiMiniCheck } from "react-icons/hi2";
 
 import { Column } from "@tanstack/react-table";
 
-import { cn } from "@/lib/utils";
+import { cn } from "../../lib/utils";
 import { Badge } from "../ui/badge";
 import { Button } from "../ui/button";
 import {
@@ -32,7 +33,7 @@ export function DataTableFacetedFilter({ column, title, options, icont }) {
           className="h-8 border-dashed text-xs"
         >
           {/* <HiOutlineTicket className="mr-2 h-4 w-4" /> */}
-          <div className="flex items-center w-full space-x-1">
+          <div className="flex items-center w-full space-x-1 ">
             <p className="mt-1 h-4 w-4">{icont}</p>
             <p>{title}</p>
           </div>
@@ -96,18 +97,18 @@ export function DataTableFacetedFilter({ column, title, options, icont }) {
                   >
                     <div
                       className={cn(
-                        "mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary",
+                        "mr-2 flex h-3 w-3 items-center justify-center rounded-sm border border-primary text-[10px]",
                         isSelected
                           ? "bg-primary text-primary-foreground"
                           : "opacity-50 [&_svg]:invisible"
                       )}
                     >
-                      <MdAnalytics className={cn("h-4 w-4")} />
+                      <HiMiniCheck className={cn("h-4 w-4")} />
                     </div>
-                    {option.icon && (
-                      <option.icon className="mr-2 h-4 w-4 text-muted-foreground" />
-                    )}
-                    <span>{option.label}</span>
+                      {option.icon && (
+                        <option.icon className="mr-2 h-4 w-4 text-muted-foreground text-xs" />
+                      )}
+                    <span className="text-xs">{option.label}</span>
                     {facets?.get(option.value) && (
                       <span className="ml-auto flex h-4 w-4 items-center justify-center font-mono text-xs">
                         {facets.get(option.value)}

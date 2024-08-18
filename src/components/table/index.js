@@ -10,7 +10,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { MdAnalytics } from "react-icons/md";
-import { columns } from "./column";
+import { columns } from "../../app/pelamar/column";
 import { data } from "./data-table";
 
 import { Button } from "../ui/button";
@@ -33,8 +33,6 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table";
-
-
 
 export function DataTableDemo() {
   const [sorting, setSorting] = useState([]);

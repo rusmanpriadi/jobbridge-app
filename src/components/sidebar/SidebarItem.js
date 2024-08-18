@@ -1,14 +1,24 @@
-import React from "react";
+"use client"
+
+import React, {useState} from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import SidebarDropdown from "./SidebarDropdown";
 
 const SidebarItem = ({ item, pageName, setPageName }) => {
+    const pathname = usePathname();
+ const [activeItem, setActiveItem] = useState(null);
   const handleClick = () => {
-    const updatedPageName =
-      pageName !== item.label.toLowerCase() ? item.label.toLowerCase() : "";
-    return setPageName(updatedPageName);
+    if (activeItem === item.label.toLowerCase()) {
+      // Jika item yang sama diklik dua kali, hapus aktif
+      setPageName("");
+      setActiveItem(null);
+    } else {
+      // Set item yang diklik sebagai aktif
+      setPageName(item.label.toLowerCase());
+      setActiveItem(item.label.toLowerCase());
+    }
   };
-
   return (
     <>
       <li>
@@ -16,10 +26,10 @@ const SidebarItem = ({ item, pageName, setPageName }) => {
           href={item.route}
           onClick={handleClick}
           className={`${
-            pageName === item.label.toLowerCase()
+            item.route === pathname
               ? "bg-primary/[.07] text-primary text-slate-800 font-semibold"
               : "hover:bg-gray-100"
-          } group relative flex  font-medium duration-300 ease-in-out items-center space-x-2 rounded-md px-3 py-2 text-muted-foreground transition-all `}   
+          } group relative flex  font-medium duration-300 ease-in-out items-center space-x-2 rounded-md px-3 py-2 text-muted-foreground transition-all `}
         >
           <span className="w-5 h-5 ">{item.icon}</span>
           <span className="text-[13px] ">{item.label}</span>

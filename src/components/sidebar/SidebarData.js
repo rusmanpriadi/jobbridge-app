@@ -24,7 +24,7 @@ const SidebarData = [
       {
         icon: <PiListChecksFill />,
         label: "Formasi",
-        route: "/profile",
+        route: "/formasi",
       },
       {
         icon: <PiListMagnifyingGlassBold />,
