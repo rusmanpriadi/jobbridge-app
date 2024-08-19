@@ -12,7 +12,7 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { DataTableViewOptions } from "./data-table-view-options";
 
-import { priorities, statuses } from "../../app/pelamar/data/data";
+import { priorities, formasis } from "../../app/pelamar/data/data";
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";
 
 export function DataTableToolbar({ table }) {
@@ -33,7 +33,7 @@ export function DataTableToolbar({ table }) {
           <DataTableFacetedFilter
             column={table.getColumn("status")}
             title="Formasi"
-            options={statuses}
+            options={formasis}
             icont={<HiOutlineTicket />}
           />
         )}

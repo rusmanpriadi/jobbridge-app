@@ -1,5 +1,13 @@
 import { Button } from "../ui/button";
-import { HiBars3 } from "react-icons/hi2";
+import { HiBars3, HiOutlineUserCircle } from "react-icons/hi2";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 
 const Navbar = (props) => {
   return (
@@ -11,9 +19,9 @@ const Navbar = (props) => {
             e.stopPropagation();
             props.setSidebarOpen(!props.sidebarOpen);
           }}
-          className="z-40 block rounded-sm border border-stroke bg-white p-1.5 shadow-sm dark:border-dark-3  lg:hidden"
+          className="z-40 block rounded-sm border border-stroke bg-white p-1.5 shadow-sm hover:bg-accent hover:text-accent-foreground  lg:hidden"
         >
-          <HiBars3 />
+          <HiBars3 className="h-4 w-4 text-black" />
         </Button>
       </div>
       <div className="w-full flex items-center justify-between">
@@ -21,8 +29,22 @@ const Navbar = (props) => {
           Dashboard
         </h1>
 
-        <Button>Kirim</Button>
-      
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="secondary" size="icon" className="rounded-full">
+              <HiOutlineUserCircle className="h-5 w-5" />
+              <span className="sr-only">Toggle user menu</span>
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuLabel>My Account</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem>Settings</DropdownMenuItem>
+            <DropdownMenuItem>Support</DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem >Logout</DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
       </div>
     </nav>
   );

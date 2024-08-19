@@ -29,9 +29,9 @@ export const labels = [
   },
 ]
 
-export const statuses = [
+export const formasis = [
   {
-    value: "backlog",
+    value: "teknisijaringan",
     label: "Teknisi Jaringan",
     icon: HiMiniSignal,
   },

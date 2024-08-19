@@ -1,7 +1,7 @@
 import { promises as fs } from "fs";
 import { z } from "zod";
 import path from "path";
-import { columns } from "./column";
+import { columns } from "./table/column";
 import { DataTable } from "../../components/table/data-table";
 import { taskSchema } from "./data/schema";
 import React from "react";

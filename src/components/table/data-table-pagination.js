@@ -29,7 +29,7 @@ export function DataTablePagination({
       </div>
       <div className="flex items-center space-x-6 lg:space-x-8">
         <div className="flex items-center space-x-2">
-          <p className="text-sm font-medium text-xs">Rows per page</p>
+          <p className=" font-medium text-xs">Rows per page</p>
           <Select
             value={`${table.getState().pagination.pageSize}`}
             className="text-xs"
