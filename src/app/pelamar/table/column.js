@@ -1,14 +1,29 @@
 "use client";
 
+import React, { useState, useEffect } from "react";
+import {
+  HiMiniSignal,
+  HiOutlineEyeDropper,
+  HiOutlineCodeBracket,
+  HiMiniClock,
+  HiMiniCheckBadge,
+  HiMiniXCircle,
+  HiOutlineExclamationCircle,
+} from "react-icons/hi2";
 import { ColumnDef } from "@tanstack/react-table";
 
 import { Badge } from "../../../components/ui/badge";
 import { Checkbox } from "../../../components/ui/checkbox";
 
-import { labels, priorities, formasis } from "../data/data";
-import { Task } from "../data/schema";
+import { iconFormasi, statusMap } from "../data/data";
+
 import { DataTableColumnHeader } from "../../../components/table/data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
+
+
+
+
+
 
 export const columns = [
   {
@@ -51,18 +66,24 @@ export const columns = [
     enableHiding: true,
   },
   {
-    accessorKey: "title",
+    accessorKey: "name",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Nama" />
     ),
     cell: ({ row }) => {
-      const label = labels.find((label) => label.value === row.original.label);
-
+useEffect(() => {
+  console.log(row)
+})
       return (
-        <div className="flex space-x-2">
+        <div className="flex items-center space-x-2">
+          <img
+            src={`${`http://127.0.0.1:8000/storage/posts/${row.original.image}`}`}
+            alt="avatar"
+            className="w-6 h-6 rounded-full"
+          />
           {/* {label && <Badge variant="outline">{label.label}</Badge>} */}
           <span className="max-w-[150px] truncate font-medium">
-            {row.getValue("title")}
+            {row.getValue("name")}
           </span>
         </div>
       );
@@ -74,12 +95,11 @@ export const columns = [
       <DataTableColumnHeader column={column} title="Email" />
     ),
     cell: ({ row }) => {
-      const label = labels.find((label) => label.value === row.original.label);
 
       return (
         <div className="flex space-x-2">
           {/* {label && <Badge variant="outline">{label.label}</Badge>} */}
-          <span className="max-w-[160px] truncate font-semibold text-bluet">
+          <span className="max-w-[170px] truncate font-semibold text-bluet">
             {row.getValue("email")}
           </span>
         </div>
@@ -87,28 +107,26 @@ export const columns = [
     },
   },
   {
-    accessorKey: "status",
+    accessorKey: "formasi",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Formasi" />
     ),
     cell: ({ row }) => {
-      const status = formasis.find(
-        (status) => status.value === row.getValue("status")
-      );
 
-      if (!status) {
-        return null;
-      }
+  const formasiName = row.getValue("formasi");
+
+  // Gunakan formasiName untuk mendapatkan komponen ikon yang sesuai
+  const IconComponent = iconFormasi[formasiName] || HiOutlineCodeBracket; ;
 
       return (
-        <div className=" max-w-[150px] ">
+        <div className=" max-w-[170px] ">
           <div className="flex items-center w-full ">
-            <section className="bg-slate-100 flex items-center px-2 py-1 rounded-full text-[10px]">
-              {status.icon && (
-                <status.icon className="mr-2 h-3 w-3 text-slate-800" />
+            <section className="bg-slate-100 flex items-center px-2 py-1 rounded-full ">
+              {IconComponent && (
+                <IconComponent className="mr-2 text-[13px] text-slate-800" />
               )}
-              <span className="text-slate-900 font-semibold ">
-                {status.label}
+              <span className="text-slate-900 font-semibold text-[11px]">
+                {formasiName || "-"}
               </span>
             </section>
           </div>
@@ -125,7 +143,6 @@ export const columns = [
       <DataTableColumnHeader column={column} title="Phone" />
     ),
     cell: ({ row }) => {
-      const label = labels.find((label) => label.value === row.original.label);
 
       return (
         <div className="flex space-x-2">
@@ -144,7 +161,6 @@ export const columns = [
       <DataTableColumnHeader column={column} title="Tgl.Appy" />
     ),
     cell: ({ row }) => {
-      const label = labels.find((label) => label.value === row.original.label);
 
       return (
         <div className="flex space-x-2">
@@ -157,27 +173,24 @@ export const columns = [
     },
   },
   {
-    accessorKey: "priority",
+    accessorKey: "status",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Status" />
     ),
     cell: ({ row }) => {
-      const priority = priorities.find(
-        (priority) => priority.value === row.getValue("priority")
-      );
+     const statusName = row.getValue("status");
 
-      if (!priority) {
-        return null;
-      }
+     // Dapatkan ikon dan warna berdasarkan status
+     const { icon: IconComponent, color } = statusMap[statusName] || {};
 
       return (
         <div className="flex items-center">
           <div className="flex items-center w-full ">
             <section
-              className={`${priority.color} flex items-center px-2 py-1 rounded-full  text-[10px] font-semibold`}
+              className={`${color} flex items-center px-2 py-1 rounded-full  text-[10px] font-semibold`}
             >
-              {priority.icon && <priority.icon className=" mr-1 h-3 w-3" />}
-              <span className="text-[10px]">{priority.label}</span>
+              {IconComponent && <IconComponent className="mr-1 h-3 w-3" />}
+              <span className="text-[10px]"> {statusName || "-"}</span>
             </section>
           </div>
         </div>

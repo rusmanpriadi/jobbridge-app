@@ -1,5 +1,4 @@
 
-import { MdAnalytics  } from "react-icons/md";
 import {
   HiOutlineViewColumns,
   HiMiniSignal,
@@ -10,70 +9,27 @@ import {
   HiOutlineBeaker,
   HiMiniCheckBadge,
   HiMiniClock,
+HiOutlineBuildingOffice ,
+HiOutlineCubeTransparent,
+  HiOutlineCodeBracket,
   HiMiniXCircle,
+  HiOutlineExclamationCircle,
 } from "react-icons/hi2";
-import { TbPointFilled } from "react-icons/tb";
 
-export const labels = [
-  {
-    value: "bug",
-    label: "Bug",
-  },
-  {
-    value: "feature",
-    label: "Feature",
-  },
-  {
-    value: "documentation",
-    label: "Documentation",
-  },
-]
+export const iconFormasi = {
+  "Teknisi Jaringan": HiMiniSignal,
+  "Perawat": HiOutlineEyeDropper,
+  "Pemulasaran Jenazah": HiOutlineCubeTransparent,
+  "Pengelola Rumah Tangga": HiOutlineBuildingOffice,
+};
 
-export const formasis = [
-  {
-    value: "teknisijaringan",
-    label: "Teknisi Jaringan",
-    icon: HiMiniSignal,
+export const statusMap = {
+  Lulus: { icon: HiMiniCheckBadge, color: "text-green-600 bg-green-100" },
+  Proses: { icon: HiMiniClock, color: "text-yellow-600 bg-yellow-100" },
+  Ditolak: { icon: HiMiniXCircle, color: "text-red-600 bg-red-100" },
+  Warning: {
+    icon: HiOutlineExclamationCircle,
+    color: "text-orange-600 bg-orange-100",
   },
-  {
-    value: "todo",
-    label: "Perawat",
-    icon: HiOutlineEyeDropper,
-  },
-  {
-    value: "in progress",
-    label: "Apoteker",
-    icon: HiOutlineBeaker,
-  },
-  {
-    value: "done",
-    label: "Rumah Tangga",
-    icon: HiOutlineFunnel,
-  },
-  {
-    value: "canceled",
-    label: "Canceled",
-    icon: HiOutlineCube,
-  },
-];
-
-export const priorities = [
-  {
-    label: "Proses",
-    value: "low",
-    icon: HiMiniClock,
-    color: "bg-orange-100 text-orange-600",
-  },
-  {
-    label: "Gugur",
-    value: "medium",
-    icon: HiMiniXCircle,
-    color: "bg-red-100 text-red-600",
-  },
-  {
-    label: "Lulus",
-    value: "high",
-    icon: HiMiniCheckBadge,
-    color: "bg-green-100 text-green-600",
-  },
-];
+  // Tambahkan status lainnya sesuai kebutuhan
+};

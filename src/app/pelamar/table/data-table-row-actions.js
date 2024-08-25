@@ -19,11 +19,9 @@ import {
 } from "../../../components/ui/dropdown-menu";
 
 import { labels } from "../data/data";
-import { taskSchema } from "../data/schema";
 import Link from "next/link";
 
 export function DataTableRowActions({ row }) {
-  const task = taskSchema.parse(row.original);
 
   return (
     <DropdownMenu>
@@ -39,7 +37,7 @@ export function DataTableRowActions({ row }) {
       <DropdownMenuContent align="end" className="w-[160px]">
         <DropdownMenuItem>Edit</DropdownMenuItem>
 
-        <Link href={`/pelamar/detail`}>
+        <Link href={`/pelamar/${row.original.id}`}>
           <DropdownMenuItem>Detail</DropdownMenuItem>
         </Link>
 
@@ -48,13 +46,13 @@ export function DataTableRowActions({ row }) {
         <DropdownMenuSub>
           <DropdownMenuSubTrigger>Labels</DropdownMenuSubTrigger>
           <DropdownMenuSubContent>
-            <DropdownMenuRadioGroup value={task.label}>
+            {/* <DropdownMenuRadioGroup value={task.label}>
               {labels.map((label) => (
                 <DropdownMenuRadioItem key={label.value} value={label.value}>
                   {label.label}
                 </DropdownMenuRadioItem>
               ))}
-            </DropdownMenuRadioGroup>
+            </DropdownMenuRadioGroup> */}
           </DropdownMenuSubContent>
         </DropdownMenuSub>
         <DropdownMenuSeparator />

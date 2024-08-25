@@ -23,9 +23,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../ui/table";
+} from "../../../components/ui/table";
 
-import { DataTablePagination } from "./data-table-pagination";
+import { DataTablePagination } from "../../../components/table/data-table-pagination";
 import { DataTableToolbar } from "./data-table-toolbar";
 
 export function DataTable({ columns, data }) {
@@ -58,7 +58,7 @@ export function DataTable({ columns, data }) {
 
   return (
     <div className="space-y-4 text-xs">
-      {/* <DataTableToolbar table={table} /> */}
+      <DataTableToolbar table={table} />
       <div className="rounded-md border">
         <Table>
           <TableHeader>

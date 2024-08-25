@@ -1,3 +1,5 @@
+"use client";
+
 import { Button } from "../ui/button";
 import { HiBars3, HiOutlineUserCircle } from "react-icons/hi2";
 import {
@@ -8,8 +10,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
+import { usePathname } from "next/navigation";
+import path from "path";
 
 const Navbar = (props) => {
+  const pathname= usePathname();
   return (
     <nav className="sticky top-0 z-40 flex w-full border-b border-stroke bg-white px-4 py-3">
       <div className="flex flex-grow items-center gap-2 sm:gap-4 lg:hidden justify-between px-4 py-5 shadow-2 md:px-5 ">
@@ -42,7 +47,7 @@ const Navbar = (props) => {
             <DropdownMenuItem>Settings</DropdownMenuItem>
             <DropdownMenuItem>Support</DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem >Logout</DropdownMenuItem>
+            <DropdownMenuItem>Logout</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
