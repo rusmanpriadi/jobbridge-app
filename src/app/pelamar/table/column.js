@@ -11,18 +11,15 @@ import {
   HiOutlineExclamationCircle,
 } from "react-icons/hi2";
 import { ColumnDef } from "@tanstack/react-table";
-
 import { Badge } from "../../../components/ui/badge";
 import { Checkbox } from "../../../components/ui/checkbox";
-
+import {  Avatar,
+  AvatarFallback,
+  AvatarImage,} from "../../../components/ui/avatar";
 import { iconFormasi, statusMap } from "../data/data";
 
 import { DataTableColumnHeader } from "../../../components/table/data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
-
-
-
-
 
 
 export const columns = [
@@ -71,16 +68,18 @@ export const columns = [
       <DataTableColumnHeader column={column} title="Nama" />
     ),
     cell: ({ row }) => {
-useEffect(() => {
-  console.log(row)
-})
+
       return (
         <div className="flex items-center space-x-2">
-          <img
-            src={`${`http://127.0.0.1:8000/storage/posts/${row.original.image}`}`}
-            alt="avatar"
-            className="w-6 h-6 rounded-full"
-          />
+          <Avatar className="w-5 h-5 rounded-full ">
+            <AvatarImage
+              src={`${`http://127.0.0.1:8000/storage/pelamar/${row.original.image}`}`}
+              alt="@shadcn"
+              className="object-cover"
+            />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
+          {/* <img alt="avatar" className="w-6 h-6 rounded-full" /> */}
           {/* {label && <Badge variant="outline">{label.label}</Badge>} */}
           <span className="max-w-[150px] truncate font-medium">
             {row.getValue("name")}
@@ -140,7 +139,7 @@ useEffect(() => {
   {
     accessorKey: "phone",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Phone" />
+      <DataTableColumnHeader column={column} title="Phone Number" />
     ),
     cell: ({ row }) => {
 
@@ -205,3 +204,4 @@ useEffect(() => {
     cell: ({ row }) => <DataTableRowActions row={row} />,
   },
 ];
+

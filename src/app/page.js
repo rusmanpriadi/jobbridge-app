@@ -44,6 +44,11 @@ import { HiBars3 } from "react-icons/hi2";
 export default function Home() {
   return (
     <div className="w-full">
+      <header className="px-4 py-3 mb-6 flex items-center  border-b h-[60px] w-full border-stroke">
+        <div className="">
+          <h3>Dashboard</h3>
+        </div>
+      </header>
       <div className="grid gap-2  md:grid-cols-2 md:gap-2 lg:grid-cols-4">
         <Card x-chunk="dashboard-01-chunk-0">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">

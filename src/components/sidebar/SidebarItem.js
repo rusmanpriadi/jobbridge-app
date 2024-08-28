@@ -1,13 +1,13 @@
-"use client"
+"use client";
 
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import SidebarDropdown from "./SidebarDropdown";
 
 const SidebarItem = ({ item, pageName, setPageName }) => {
-    const pathname = usePathname();
- const [activeItem, setActiveItem] = useState(null);
+  const pathname = usePathname();
+  const [activeItem, setActiveItem] = useState(null);
   const handleClick = () => {
     if (activeItem === item.label.toLowerCase()) {
       // Jika item yang sama diklik dua kali, hapus aktif
@@ -26,7 +26,8 @@ const SidebarItem = ({ item, pageName, setPageName }) => {
           href={item.route}
           onClick={handleClick}
           className={`${
-            item.route === pathname
+            (item.route === "/" && pathname === "/") || // Exact match for 
+            (item.route !== "/" && pathname.startsWith(item.route))
               ? "bg-primary/[.07] text-primary text-slate-800 font-semibold"
               : "hover:bg-gray-100"
           } group relative flex  font-medium duration-300 ease-in-out items-center space-x-2 rounded-md px-3 py-2 text-muted-foreground transition-all `}

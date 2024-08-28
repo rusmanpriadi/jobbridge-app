@@ -15,8 +15,21 @@ import path from "path";
 
 const Navbar = (props) => {
   const pathname= usePathname();
+
+  const navbarData = [
+    {
+      name: "Dashboard",
+      path: "/",
+    
+    },
+    {
+      name: "Pelamar",
+      path: "/pelamar",
+    }
+    ]
+    const title = navbarData[pathname === navbarData[0].path ? 0 : 1].name
   return (
-    <nav className="sticky top-0 z-40 flex w-full border-b border-stroke bg-white px-4 py-3">
+    <nav className="sticky top-0 z-40 flex w-full border-b border-stroke bg-white px-4 py-3 lg:hidden">
       <div className="flex flex-grow items-center gap-2 sm:gap-4 lg:hidden justify-between px-4 py-5 shadow-2 md:px-5 ">
         <Button
           aria-controls="sidebar"
@@ -31,7 +44,7 @@ const Navbar = (props) => {
       </div>
       <div className="w-full flex items-center justify-between">
         <h1 className="mb-0.5 text-heading-5 font-bold text-dark dark:text-white">
-          Dashboard
+          {title}
         </h1>
 
         <DropdownMenu>

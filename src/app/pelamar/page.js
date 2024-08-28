@@ -3,6 +3,7 @@ import axios from "axios";
 import { columns } from "./table/column";
 import { DataTable } from "./table/data-table";
 import React from "react";
+import { Button } from "../../components/ui/button";
 
 
 export const metadata = {
@@ -22,7 +23,7 @@ async function getTasks() {
     const tasks = response.data;
     return tasks; // Return data directly without schema validation
   } catch (error) {
-    console.error("Failed to fetch tasks:", error);
+    // console.error("Failed to fetch tasks:", error);
     return [];
   }
 }
@@ -30,6 +31,15 @@ const Pelamar = async () => {
   const tasks = await getTasks();
   return (
     <div>
+      <header className="px-5 py-3 flex items-center justify-between border-b h-[70px] w-full border-stroke">
+        <div>
+          <h3 className="text-[22px] font-semibold">Pelamar</h3>
+          <p className="text-[11px] text-muted-foreground font-medium">
+            <span className="text-slate-900 font-semibold">320</span> Pelamar
+          </p>
+        </div>
+        <Button className="text-xs">Add Pelamar</Button>
+      </header>
       <DataTable data={tasks} columns={columns} />
     </div>
   );
