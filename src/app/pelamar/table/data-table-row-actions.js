@@ -56,7 +56,7 @@ export function DataTableRowActions({ row }) {
         <DropdownMenuContent align="end" className="w-[160px]">
           <DropdownMenuItem>Edit</DropdownMenuItem>
 
-          <Sheet>
+          <Sheet className="max-w-[500px] p-0">
             <SheetTrigger asChild>
               <Button
                 variant="none"
@@ -66,10 +66,12 @@ export function DataTableRowActions({ row }) {
                 View
               </Button>
             </SheetTrigger>
-            <SheetContent>
-              <SheetHeader className="flex space-x-4 w-full">
-                <div className="w-full font-medium flex items-center">
-                  <p className="text-sm text-slate-700 w-full max-w-[95px] border-r">Pelamar View</p>
+            <SheetContent className="max-w-[600px] p-0">
+              <SheetHeader className="flex space-x-4 w-full p-3">
+                <div className="w-full font-medium flex items-center pr-10">
+                  <p className="text-sm text-slate-700 w-full max-w-[95px] border-r">
+                    Pelamar View
+                  </p>
                   <section className="w-full flex items-center justify-between space-x-2 ms-2">
                     <div className="flex items-center space-x-2">
                       <div className=" p-[2px] rounded-full border border-slate-300">
@@ -80,9 +82,15 @@ export function DataTableRowActions({ row }) {
                       </div>
                     </div>
                   </section>
-                    <Button size="xs" className="text-xs mr-6">
+                  {/* <Button size="xs" className="text-xs mr-6">
                       View Full Details
-                    </Button>
+                    </Button> */}
+                  <Link
+                    href={`/pelamar/${row.original.id}`}
+                    className="text-[11px] w-full p-2 rounded-lg border border-slate-300 hover:bg-slate-100 max-w-[105px]"
+                  >
+                    View Full Details
+                  </Link>
                 </div>
               </SheetHeader>
               <div className="mt-6">
@@ -91,6 +99,14 @@ export function DataTableRowActions({ row }) {
                   name={row.original.name}
                   formasi={row.original.formasi}
                   status={row.original.status}
+                  tgl_lahir={row.original.tgl_lahir}
+                  id={row.original.id}
+                  phone={row.original.phone}
+                  apply={row.original.apply}
+                  email={row.original.email}
+                  jenis_kelamin={row.original.jenis_kelamin}
+                  nik={row.original.nik}
+                  className="p-3"
                 />
               </div>
               <SheetFooter>

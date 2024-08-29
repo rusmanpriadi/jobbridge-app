@@ -27,11 +27,11 @@ export const statusMap = {
   }, iconColor: "bg-orange-400 text-orange-600",
   // Tambahkan status lainnya sesuai kebutuhan
 };
-const Preview = ({ img, name, formasi, status }) => {
+const Preview = ({id, img, name, formasi, status, tgl_lahir, apply, phone, jenis_kelamin, email, nik }) => {
  
   return (
-    <section>
-      <article className="flex items-center space-x-3">
+    <section className="">
+      <article className="flex items-center space-x-3 px-4">
         <img
           src={`${`http://127.0.0.1:8000/storage/pelamar/${img}`}`}
           alt="image"
@@ -69,7 +69,17 @@ const Preview = ({ img, name, formasi, status }) => {
         </div>
       </article>
       <article>
-        <PelamarDetailView />
+        <PelamarDetailView
+          tgl_lahir={tgl_lahir}
+          id={id}
+          formasi={formasi}
+          status={status}
+          jenis_kelamin={jenis_kelamin}
+          apply={apply}
+          email={email}
+          phone={phone}
+          nik={nik}
+        />
       </article>
     </section>
   );

@@ -49,7 +49,7 @@ export default function Home() {
           <h3>Dashboard</h3>
         </div>
       </header>
-      <div className="grid gap-2  md:grid-cols-2 md:gap-2 lg:grid-cols-4">
+      <div className="grid gap-2  md:grid-cols-2 md:gap-2 lg:grid-cols-4 px-5">
         <Card x-chunk="dashboard-01-chunk-0">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-md font-medium">Total Pelamar</CardTitle>
@@ -239,7 +239,7 @@ export default function Home() {
         </Card>
         <div></div>
       </div>
-      <div className=" w-full flex-1 flex lg:flex-row flex-col gap-4 items-center">
+      <div className=" w-full flex-1 flex lg:flex-row flex-col gap-4 items-center px-5">
         <Card className="lg:max-w-xl grow w-full " x-chunk="charts-01-chunk-0">
           <CardHeader className="space-y-0 pb-2">
             <CardDescription>Today</CardDescription>
