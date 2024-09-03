@@ -33,7 +33,6 @@ export function DataTable({ columns, data }) {
   const [columnVisibility, setColumnVisibility] = useState({});
   const [columnFilters, setColumnFilters] = useState([]);
   const [sorting, setSorting] = useState([]);
-
   const table = useReactTable({
     data,
     columns,

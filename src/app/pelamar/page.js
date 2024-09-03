@@ -38,9 +38,9 @@ const Pelamar = async () => {
             <span className="text-slate-900 font-semibold">320</span> Pelamar
           </p>
         </div>
-        <Button className="text-xs">Add Pelamar</Button>
+        <Button className="text-xs px-5 py-2" size="none" variant="green">Add Pelamar</Button>
       </header>
-      <DataTable data={tasks} columns={columns} />
+      <DataTable data={tasks} columns={columns}  />
     </div>
   );
 };

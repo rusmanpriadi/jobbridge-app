@@ -13,14 +13,15 @@ import {
 import { ColumnDef } from "@tanstack/react-table";
 import { Badge } from "../../../components/ui/badge";
 import { Checkbox } from "../../../components/ui/checkbox";
-import {  Avatar,
+import {
+  Avatar,
   AvatarFallback,
-  AvatarImage,} from "../../../components/ui/avatar";
+  AvatarImage,
+} from "../../../components/ui/avatar";
 import { iconFormasi, statusMap } from "../data/data";
 
 import { DataTableColumnHeader } from "../../../components/table/data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
-
 
 export const columns = [
   {
@@ -68,7 +69,6 @@ export const columns = [
       <DataTableColumnHeader column={column} title="Nama" />
     ),
     cell: ({ row }) => {
-
       return (
         <div className="flex items-center space-x-2">
           <Avatar className="w-5 h-5 rounded-full ">
@@ -94,7 +94,6 @@ export const columns = [
       <DataTableColumnHeader column={column} title="Email" />
     ),
     cell: ({ row }) => {
-
       return (
         <div className="flex space-x-2">
           {/* {label && <Badge variant="outline">{label.label}</Badge>} */}
@@ -111,11 +110,10 @@ export const columns = [
       <DataTableColumnHeader column={column} title="Formasi" />
     ),
     cell: ({ row }) => {
+      const formasiName = row.getValue("formasi");
 
-  const formasiName = row.getValue("formasi");
-
-  // Gunakan formasiName untuk mendapatkan komponen ikon yang sesuai
-  const IconComponent = iconFormasi[formasiName] || HiOutlineCodeBracket; ;
+      // Gunakan formasiName untuk mendapatkan komponen ikon yang sesuai
+      const IconComponent = iconFormasi[formasiName] || HiOutlineCodeBracket;
 
       return (
         <div className=" max-w-[170px] ">
@@ -142,7 +140,6 @@ export const columns = [
       <DataTableColumnHeader column={column} title="Phone Number" />
     ),
     cell: ({ row }) => {
-
       return (
         <div className="flex space-x-2">
           {/* {label && <Badge variant="outline">{label.label}</Badge>} */}
@@ -160,7 +157,6 @@ export const columns = [
       <DataTableColumnHeader column={column} title="Tgl.Appy" />
     ),
     cell: ({ row }) => {
-
       return (
         <div className="flex space-x-2">
           {/* {label && <Badge variant="outline">{label.label}</Badge>} */}
@@ -177,10 +173,10 @@ export const columns = [
       <DataTableColumnHeader column={column} title="Status" />
     ),
     cell: ({ row }) => {
-     const statusName = row.getValue("status");
+      const statusName = row.getValue("status");
 
-     // Dapatkan ikon dan warna berdasarkan status
-     const { icon: IconComponent, color } = statusMap[statusName] || {};
+      // Dapatkan ikon dan warna berdasarkan status
+      const { icon: IconComponent, color } = statusMap[statusName] || {};
 
       return (
         <div className="flex items-center">
@@ -201,7 +197,9 @@ export const columns = [
   },
   {
     id: "actions",
-    cell: ({ row }) => <DataTableRowActions row={row} />,
+    cell: ({ row }) => {
+
+      return <DataTableRowActions row={row} applicants={row.original} />;
+    },
   },
 ];
-

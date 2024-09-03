@@ -36,8 +36,6 @@ import {
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
 } from "../../../components/ui/dropdown-menu";
-
-import { labels } from "../data/data";
 import Link from "next/link";
 
 export function DataTableRowActions({ row }) {
@@ -68,23 +66,11 @@ export function DataTableRowActions({ row }) {
             </SheetTrigger>
             <SheetContent className="max-w-[600px] p-0">
               <SheetHeader className="flex space-x-4 w-full p-3">
-                <div className="w-full font-medium flex items-center pr-10">
+                <div className="w-full font-medium flex items-center justify-between pr-10">
                   <p className="text-sm text-slate-700 w-full max-w-[95px] border-r">
                     Pelamar View
                   </p>
-                  <section className="w-full flex items-center justify-between space-x-2 ms-2">
-                    <div className="flex items-center space-x-2">
-                      <div className=" p-[2px] rounded-full border border-slate-300">
-                        <HiChevronDown className="cursor-pointer text-lg  font-semibold text-slate-900 " />
-                      </div>
-                      <div className=" p-[2px] rounded-full border border-slate-300">
-                        <HiChevronUp className="cursor-pointer text-lg  font-semibold text-slate-900 " />
-                      </div>
-                    </div>
-                  </section>
-                  {/* <Button size="xs" className="text-xs mr-6">
-                      View Full Details
-                    </Button> */}
+
                   <Link
                     href={`/pelamar/${row.original.id}`}
                     className="text-[11px] w-full p-2 rounded-lg border border-slate-300 hover:bg-slate-100 max-w-[105px]"
@@ -117,7 +103,9 @@ export function DataTableRowActions({ row }) {
             </SheetContent>
           </Sheet>
 
-          <DropdownMenuItem>Favorite</DropdownMenuItem>
+          <DropdownMenuItem className="p-[0px]">
+            <Link href={`/pelamar/${row.original.id}`} className="w-full text-slate-800 font-medium px-2 py-[6px] ">Detail</Link>
+          </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuSub>
             <DropdownMenuSubTrigger>Labels</DropdownMenuSubTrigger>
