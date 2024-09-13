@@ -9,39 +9,39 @@ import {
 } from "react-icons/hi2";
 import { Table } from "@tanstack/react-table";
 
-import { Button } from "../../../components/ui/button";
-import { Input } from "../../../components/ui/input";
-import { DataTableViewOptions } from "../../../components/table/data-table-view-options";
-import { DataTableFacetedFilter } from "../../../components/table/data-table-faceted-filter";
+import { Button } from "../../../../components/ui/button";
+import { Input } from "../../../../components/ui/input";
+import { DataTableViewOptions } from "../../../../components/table/data-table-view-options";
+import { DataTableFacetedFilter } from "../../../../components/table/data-table-faceted-filter";
 
 export function DataTableToolbar({ table }) {
   const [filterMap, setfilterMap] = useState([]);
-  
+
   const isFiltered = table.getState().columnFilters.length > 0;
- useEffect(() => {
-   // Fetch data formasi from API
-   fetch("http://127.0.0.1:8000/api/pelamar")
-     .then((response) => response.json())
-     .then((data) => {
-       // Hapus duplikat 'formasi'
-       const uniqueFormasi = Array.from(
-         new Set(data.map((f) => f.formasi))
-       ).map((value) => {
-         return data.find((f) => f.formasi === value);
-       });
+  useEffect(() => {
+    // Fetch data formasi from API
+    fetch("http://127.0.0.1:8000/api/pelamar")
+      .then((response) => response.json())
+      .then((data) => {
+        // Hapus duplikat 'formasi'
+        const uniqueFormasi = Array.from(
+          new Set(data.map((f) => f.formasi))
+        ).map((value) => {
+          return data.find((f) => f.formasi === value);
+        });
 
-       // Hapus duplikat 'status'
-       const uniqueStatus = Array.from(new Set(data.map((f) => f.status))).map(
-         (value) => {
-           return data.find((f) => f.status === value);
-         }
-       );
+        // Hapus duplikat 'status'
+        const uniqueStatus = Array.from(new Set(data.map((f) => f.status))).map(
+          (value) => {
+            return data.find((f) => f.status === value);
+          }
+        );
 
-       // Menggabungkan hasil unik ke dalam filterMap
-       setfilterMap(uniqueFormasi.concat(uniqueStatus));
-     })
-     .catch((error) => console.error("Error fetching formasi:", error));
- }, []);
+        // Menggabungkan hasil unik ke dalam filterMap
+        setfilterMap(uniqueFormasi.concat(uniqueStatus));
+      })
+      .catch((error) => console.error("Error fetching formasi:", error));
+  }, []);
   return (
     <div className="flex items-center justify-between">
       <div className="flex flex-1 items-center space-x-2">

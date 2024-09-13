@@ -14,7 +14,7 @@ const SidebarData = [
       {
         icon: <MdAnalytics />,
         label: "Dashboard",
-        route: "/",
+        route: "/dashboard",
       },
       {
         icon: <FaUsers />,

@@ -6,11 +6,12 @@ import {
   HiArrowLeft,
   HiChevronDown,
   HiChevronUp,
+  HiMiniIdentification,
 } from "react-icons/hi2";
 import { Row } from "@tanstack/react-table";
-import { Label } from "../../../components/ui/label";
-import { Input } from "../../../components/ui/input";
-import { Button } from "../../../components/ui/button";
+import { Label } from "../../../../components/ui/label";
+import { Input } from "../../../../components/ui/input";
+import { Button } from "../../../../components/ui/button";
 import Preview from "../preview/page";
 import {
   Sheet,
@@ -21,7 +22,7 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "../../../components/ui/sheet";
+} from "../../../../components/ui/sheet";
 
 import {
   DropdownMenu,
@@ -35,7 +36,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
   DropdownMenuTrigger,
-} from "../../../components/ui/dropdown-menu";
+} from "../../../../components/ui/dropdown-menu";
 import Link from "next/link";
 
 export function DataTableRowActions({ row }) {
@@ -67,9 +68,14 @@ export function DataTableRowActions({ row }) {
             <SheetContent className="max-w-[600px] p-0">
               <SheetHeader className="flex space-x-4 w-full p-3">
                 <div className="w-full font-medium flex items-center justify-between pr-10">
-                  <p className="text-sm text-slate-700 w-full max-w-[95px] border-r">
-                    Pelamar View
-                  </p>
+                  <div className="flex items-center space-x-2">
+                    <span className="p-1 text-greent bg-muted rounded-full">
+                      <HiMiniIdentification className="h-4 w-4" />
+                    </span>
+                    <p className="text-sm text-slate-700 w-full max-w-[95px] border-r">
+                      Pelamar View
+                    </p>
+                  </div>
 
                   <Link
                     href={`/pelamar/${row.original.id}`}
@@ -104,7 +110,12 @@ export function DataTableRowActions({ row }) {
           </Sheet>
 
           <DropdownMenuItem className="p-[0px]">
-            <Link href={`/pelamar/${row.original.id}`} className="w-full text-slate-800 font-medium px-2 py-[6px] ">Detail</Link>
+            <Link
+              href={`/pelamar/${row.original.id}`}
+              className="w-full text-slate-800 font-medium px-2 py-[6px] "
+            >
+              Detail
+            </Link>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuSub>

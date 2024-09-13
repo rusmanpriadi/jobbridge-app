@@ -4,8 +4,8 @@ import {
   TableBody,
   TableRow,
   TableCell,
-} from "../../../components/ui/table";
-import { Separator } from "../../../components/ui/separator";
+} from "../../../../components/ui/table";
+import { Separator } from "../../../../components/ui/separator";
 
 const PelamarDetailView = ({
   tgl_lahir,
@@ -57,7 +57,9 @@ const PelamarDetailView = ({
   ];
   return (
     <div className="mt-4">
-      <h4 className="text-sm text-slate-600 px-5 font-semibold">Pelamar Detail</h4>
+      <h4 className="text-sm text-slate-600 px-5 font-semibold">
+        Pelamar Detail
+      </h4>
       <Table className="mt-3 w-full grid grid-cols-2 gap-4 px-5">
         <TableBody className="text-xs w-full">
           {information.map((info, index) => (

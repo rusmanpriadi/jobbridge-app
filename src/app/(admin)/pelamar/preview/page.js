@@ -44,7 +44,7 @@ const Preview = ({
   // Ambil style dari StatusMap berdasarkan status
   const StatusStyle = StatusMap[status] || {
     color: "text-gray-600 bg-gray-100",
-    icont: GiPlainCircle,
+    icon: GiPlainCircle,
     iconColor: "bg-gray-400 text-gray-600",
   };
   const StatusIcon = StatusStyle.icon;

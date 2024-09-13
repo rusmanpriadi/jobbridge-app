@@ -10,7 +10,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { MdAnalytics } from "react-icons/md";
-import { columns } from "../../app/pelamar/column";
+import { columns } from "../../app/(admin)/pelamar/column";
 import { data } from "./data-table";
 
 import { Button } from "../ui/button";

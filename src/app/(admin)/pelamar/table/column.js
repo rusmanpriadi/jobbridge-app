@@ -11,16 +11,16 @@ import {
   HiOutlineExclamationCircle,
 } from "react-icons/hi2";
 import { ColumnDef } from "@tanstack/react-table";
-import { Badge } from "../../../components/ui/badge";
-import { Checkbox } from "../../../components/ui/checkbox";
+import { Badge } from "../../../../components/ui/badge";
+import { Checkbox } from "../../../../components/ui/checkbox";
 import {
   Avatar,
   AvatarFallback,
   AvatarImage,
-} from "../../../components/ui/avatar";
+} from "../../../../components/ui/avatar";
 import { iconFormasi, statusMap } from "../data/data";
 
-import { DataTableColumnHeader } from "../../../components/table/data-table-column-header";
+import { DataTableColumnHeader } from "../../../../components/table/data-table-column-header";
 import { DataTableRowActions } from "./data-table-row-actions";
 
 export const columns = [
@@ -198,7 +198,6 @@ export const columns = [
   {
     id: "actions",
     cell: ({ row }) => {
-
       return <DataTableRowActions row={row} applicants={row.original} />;
     },
   },

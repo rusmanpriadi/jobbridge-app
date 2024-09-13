@@ -23,9 +23,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../../../components/ui/table";
+} from "../../../../components/ui/table";
 
-import { DataTablePagination } from "../../../components/table/data-table-pagination";
+import { DataTablePagination } from "../../../../components/table/data-table-pagination";
 import { DataTableToolbar } from "./data-table-toolbar";
 
 export function DataTable({ columns, data }) {
@@ -87,7 +87,7 @@ export function DataTable({ columns, data }) {
                   className="hover:bg-muted text-xs "
                 >
                   {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id} >
+                    <TableCell key={cell.id}>
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()
