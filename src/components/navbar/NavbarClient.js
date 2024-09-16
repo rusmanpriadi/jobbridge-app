@@ -40,7 +40,7 @@ const NavbarClient = () => {
 
   const [currentLink, setCurrentLink] = useState("/");
   const pathname = usePathname();
-const path = ["/home", "/berkas"];
+const path = ["/home", "/berkas", "/list-formasi", "/data-diri"];
   // Cek apakah pathnya adalah /home
   const isHomePath = path.includes(pathname);
 

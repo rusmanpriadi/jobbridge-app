@@ -5,21 +5,27 @@ import {
   PiListMagnifyingGlassBold,
   PiCardholderFill,
   PiWaveTriangleFill,
-} from "react-icons/pi";
 
+} from "react-icons/pi";
+import { HiCreditCard, HiHome  } from "react-icons/hi2";
 const ClientData = [
   {
     name: "",
     menuItems: [
       {
-        icon: <MdAnalytics />,
+        icon: <HiHome  />,
         label: "Home",
         route: "/home",
       },
       {
+        icon: <HiCreditCard />,
+        label: "Data Diri",
+        route: "/data-diri",
+      },
+      {
         icon: <FaUsers />,
         label: "Formasi",
-        route: "/pilih-formasi",
+        route: "/list-formasi",
       },
       {
         icon: <PiListChecksFill />,
@@ -31,10 +37,8 @@ const ClientData = [
         label: "Resume",
         route: "#",
       },
-      
     ],
   },
-
 ];
 
 export default ClientData;
