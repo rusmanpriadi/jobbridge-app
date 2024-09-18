@@ -12,7 +12,7 @@ export function MailList({ items }) {
   const [mail, setMail] = useMail();
 
   return (
-    <ScrollArea className="h-screen">
+    <ScrollArea className="h-[400px]">
       <div className="flex flex-col gap-2 py-4 pr-4 pt-0">
         {items.map((item) => (
           <button

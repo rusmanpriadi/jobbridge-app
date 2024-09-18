@@ -35,7 +35,7 @@ const ClientData = [
       {
         icon: <PiListMagnifyingGlassBold />,
         label: "Resume",
-        route: "#",
+        route: "/resume",
       },
     ],
   },
