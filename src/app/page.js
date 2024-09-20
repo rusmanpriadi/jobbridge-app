@@ -9,6 +9,7 @@ export const metadata = {
 };
 
 export default function Home() {
+  
   return (
     <ClientLayout className="w-full">
       <Banner />

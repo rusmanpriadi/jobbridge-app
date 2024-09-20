@@ -12,7 +12,7 @@ import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { DataTableViewOptions } from "./data-table-view-options";
 
-import { priorities, formasis } from "../../app/(admin)/pelamar/data/data";
+import { priorities, formasis } from "../../app/admin/pelamar/data/data";
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";
 
 export function DataTableToolbar({ table }) {

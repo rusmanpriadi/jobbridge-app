@@ -18,8 +18,8 @@ import {
   DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
 
-import { labels } from "../../app/(admin)/pelamar/data/data";
-import { taskSchema } from "../../app/(admin)/pelamar/data/schema";
+import { labels } from "../../app/admin/pelamar/data/data";
+import { taskSchema } from "../../app/admin/pelamar/data/schema";
 
 export function DataTableRowActions({ row }) {
   const task = taskSchema.parse(row.original);

@@ -40,7 +40,7 @@ const NavbarClient = () => {
 
   const [currentLink, setCurrentLink] = useState("/");
   const pathname = usePathname();
-const path = ["/home", "/berkas", "/list-formasi", "/data-diri", "/resume"];
+const path = ["/user/home", "/user/berkas", "/user/list-formasi", "/user/data-diri", "/user/resume"];
   // Cek apakah pathnya adalah /home
   const isHomePath = path.includes(pathname);
 
@@ -125,13 +125,13 @@ const path = ["/home", "/berkas", "/list-formasi", "/data-diri", "/resume"];
 
           <div className="space-x-4">
             <Button variant="none" className="font-semibold">
-              Masuk
+              <Link href="/login">Masuk</Link>
             </Button>
             <Button
               size="none"
               className=" px-4 py-2 bg-red-500 hover:bg-red-600"
             >
-              Buat Akun
+              <Link href="/register"> Buat Akun</Link>
             </Button>
           </div>
           {/* DRAWER LINKS DATA */}

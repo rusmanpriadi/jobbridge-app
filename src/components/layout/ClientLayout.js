@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 const ClientLayout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const pathname = usePathname();
-const path = ["/home", "/berkas", "/list-formasi", "/data-diri", "/resume"];
+const path = ["/user/home", "/user/berkas", "/user/list-formasi", "/user/data-diri", "/user/resume"];
     const isHomePath = path.includes(pathname);
   return (
     <>

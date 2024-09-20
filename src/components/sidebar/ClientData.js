@@ -15,27 +15,27 @@ const ClientData = [
       {
         icon: <HiHome  />,
         label: "Home",
-        route: "/home",
+        route: "/user/home",
       },
       {
         icon: <HiCreditCard />,
         label: "Data Diri",
-        route: "/data-diri",
+        route: "/user/data-diri",
       },
       {
         icon: <FaUsers />,
         label: "Formasi",
-        route: "/list-formasi",
+        route: "/user/list-formasi",
       },
       {
         icon: <PiListChecksFill />,
         label: "Berkas",
-        route: "/berkas",
+        route: "/user/berkas",
       },
       {
         icon: <PiListMagnifyingGlassBold />,
         label: "Resume",
-        route: "/resume",
+        route: "/user/resume",
       },
     ],
   },

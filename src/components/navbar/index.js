@@ -19,7 +19,7 @@ const Navbar = (props) => {
   const navbarData = [
     {
       name: "Dashboard",
-      path: "/",
+      path: "/dashboard",
     
     },
     {
@@ -29,7 +29,7 @@ const Navbar = (props) => {
     ]
     const title = navbarData[pathname === navbarData[0].path ? 0 : 1].name
   return (
-    <nav className="sticky top-0 z-40 flex w-full border-b border-stroke bg-white px-4 py-3 lg:hidden">
+    <nav className="sticky top-0 z-40 flex w-full border-b border-stroke bg-white px-4 py-3 h-[60px]">
       <div className="flex flex-grow items-center gap-2 sm:gap-4 lg:hidden justify-between px-4 py-5 shadow-2 md:px-5 ">
         <Button
           aria-controls="sidebar"

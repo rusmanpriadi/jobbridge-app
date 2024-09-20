@@ -14,32 +14,32 @@ const SidebarData = [
       {
         icon: <MdAnalytics />,
         label: "Dashboard",
-        route: "/dashboard",
+        route: "/admin/dashboard",
       },
       {
         icon: <FaUsers />,
         label: "Pelamar",
-        route: "/pelamar",
+        route: "/admin/pelamar",
       },
       {
         icon: <PiListChecksFill />,
         label: "Formasi",
-        route: "/formasi",
+        route: "/admin/formasi",
       },
       {
         icon: <PiListMagnifyingGlassBold />,
         label: "Kriteria",
-        route: "#",
+        route: "/admin/#",
       },
       {
         icon: <PiCardholderFill />,
         label: "Nilai",
-        route: "#",
+        route: "/admin/#",
       },
       {
         icon: <PiWaveTriangleFill />,
         label: "Hasil",
-        route: "#",
+        route: "/admin/#",
       },
     ],
   },

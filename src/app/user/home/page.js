@@ -15,6 +15,7 @@ export const metadata = {
 const Home = () => {
   return (
     <ClientLayout className="w-full ">
+     
       <div className=" px-8 mt-5 w-full">
         <p className="text-md">
           Welcome,{" "}
@@ -22,7 +23,10 @@ const Home = () => {
             Rusman Priadi
           </span>
         </p>
-        <span className="text-xs text-muted-foreground">Selamat datang di website rekrutmen karyawan Rumah Sakit Universitas Hasanuddin </span>
+        <span className="text-xs text-muted-foreground">
+          Selamat datang di website rekrutmen karyawan Rumah Sakit Universitas
+          Hasanuddin{" "}
+        </span>
         <div className="flex items-center mt-8 flex-wrap">
           <div className="flex items-center  relative">
             <div className="rounded-xl px-3 w-[180px] h-[150px]  transition duration-500 ease-in-out flex flex-col items-center justify-center border-2  space-y-3 bg-red-400 hover:bg-red-500  text-white">
@@ -59,7 +63,6 @@ const Home = () => {
             </div>
           </div>
         </div>
-        
       </div>
     </ClientLayout>
   );
