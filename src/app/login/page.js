@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { Button } from "../../../components/ui/button";
+import { Button } from "../../components/ui/button";
 import { NextResponse } from "next/server";
 import {
   Card,
@@ -14,9 +14,9 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../../../components/ui/card";
-import { Input } from "../../../components/ui/input";
-import { Label } from "../../../components/ui/label";
+} from "../../components/ui/card";
+import { Input } from "../../components/ui/input";
+import { Label } from "../../components/ui/label";
 export const description =
   "A sign up form with first name, last name, email and password inside a card. There's an option to sign up with GitHub and a link to login if you already have an account";
 
@@ -34,7 +34,6 @@ const Login = () => {
         nik,
         password,
       });
-
 
       if (response.status === 200) {
         // Pastikan token ada di dalam respons
