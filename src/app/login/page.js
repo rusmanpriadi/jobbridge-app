@@ -24,43 +24,47 @@ const Login = () => {
   const [nik, setNik] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false); // Tambahkan state isLoading
   const router = useRouter();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true); // Tambahkan setLoading ke state
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/login", {
-        nik,
-        password,
-      });
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/login`,
+        {
+          nik,
+          password,
+        }
+      );
 
-      if (response.status === 200) {
+      // console.log(response);
+      if (response.status === 201) {
         // Pastikan token ada di dalam respons
-        const { token, role } = response.data;
+        let token = response.data.token;
+        let role = response.data.data.role;
 
         if (!token) {
           throw new Error("Token tidak ditemukan dalam respons API.");
         }
-
-        // Simpan token dan role ke localStorage atau cookie
-        localStorage.setItem("token", token);
-        localStorage.setItem("role", role);
         // Simpan token dan role ke cookie agar middleware bisa mengaksesnya
-        Cookies.set("token", token, { expires: 1 }); // token berlaku selama 1 hari
-        Cookies.set("role", role, { expires: 1 });
+        Cookies.set("token", token, { expires: 1, path: "/", secure: true }); // token berlaku selama 1 hari
+        Cookies.set("role", role, { expires: 1, path: "/", secure: true });
         // Redirect sesuai role
         if (role === "admin") {
           router.push("/admin/dashboard");
-        } else if (role === "user") {
+        } else if (role === "pelamar") {
           router.push("/user/home");
         } else {
-          router.push("/home");
+          router.push("/user/home");
         }
       }
     } catch (error) {
       setError("Login gagal. Periksa nik dan password Anda.");
-      console.error("Error:", error);
+    } finally {
+      setIsLoading(false); // Selesaikan loading setelah selesai
     }
   };
   return (
@@ -85,7 +89,7 @@ const Login = () => {
                   <Label htmlFor="nik">NIK</Label>
                   <Input
                     id="nik"
-                    type="text"
+                    type="number"
                     placeholder="Nomor Induk Kependudukan"
                     value={nik}
                     onChange={(e) => setNik(e.target.value)}
@@ -112,7 +116,14 @@ const Login = () => {
                 </div>
                 {error && <p>{error}</p>}
                 <Button type="submit" className="w-full">
-                  Login
+                  {isLoading ? (
+                    <div className="flex items-center justify-center">
+                      <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-white mr-2"></div>
+                      Loading...
+                    </div>
+                  ) : (
+                    "Login"
+                  )}
                 </Button>
               </div>
               <div className="mt-4 text-center text-sm">

@@ -37,13 +37,16 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post("http://127.0.0.1:8000/api/register", {
-        nik,
-        name,
-        email,
-        password,
-        password_confirmation: confirmPassword,
-      });
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/register`,
+        {
+          nik,
+          name,
+          email,
+          password,
+          password_confirmation: confirmPassword,
+        }
+      );
 
       if (response.status === 201) {
         setSuccess("Registrasi berhasil! Silakan login.");

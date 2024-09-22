@@ -2,8 +2,8 @@ import { NextResponse } from "next/server";
 
 export function middleware(req) {
   // Mendapatkan token dan role dari cookies
-  const token = req.cookies.get("token")?.value;
-  const role = req.cookies.get("role")?.value;
+  const token = req.cookies.get("token").value;
+  const role = req.cookies.get("role").value;
 
   const { pathname } = req.nextUrl;
 
@@ -19,7 +19,7 @@ export function middleware(req) {
     return NextResponse.redirect(new URL("/user/home", req.url));
   }
 
-  if (pathname.startsWith("/user") && role !== "user") {
+  if (pathname.startsWith("/user") && role !== "pelamar") {
     console.log("Akses ditolak untuk non-user.");
     return NextResponse.redirect(new URL("/admin/dashboard", req.url));
   }

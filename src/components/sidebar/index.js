@@ -37,7 +37,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
         <div className="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
           <div className="flex w-full items-center border-b px-3 h-[60px] lg:px-6 justify-between">
             <Link href={"/dashboard"} className="flex items-center w-full space-x-2">
-            <Image src="/images/rsuh.webp" alt="logo" width={25} height={25} />
+            <Image src="/images/profile.jpg" alt="logo" width={25} height={25} />
               {/* <HiBuildingLibrary className="h-6 w-6"/> */}
               <span className="font-semibold">JobBridge</span>
             </Link>
