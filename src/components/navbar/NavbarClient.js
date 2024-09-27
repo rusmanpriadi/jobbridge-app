@@ -64,6 +64,7 @@ const path = ["/user/home", "/user/berkas", "/user/list-formasi", "/user/data-di
                   alt="dsign-logo"
                   width={20}
                   height={20}
+                  style={{ width: "auto", height: "auto" }}
                 />
                 <img
                   className="hidden h-full w-full lg:block"
@@ -71,6 +72,7 @@ const path = ["/user/home", "/user/berkas", "/user/list-formasi", "/user/data-di
                   alt="dsign-logo"
                   width={20}
                   height={20}
+                  style={{ width: "auto", height: "auto" }}
                 />
               </div>
             )}

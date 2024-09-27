@@ -72,3 +72,14 @@
     @apply bg-background text-foreground;
   }
 }
+
+
+/* Sembunyikan tombol save secara default */
+.save-button {
+  display: none;
+}
+
+/* Tampilkan tombol save hanya ketika tab Data Diri (profile) aktif */
+[aria-selected="true"][value="profile"] ~ .save-button {
+  display: inline-block;
+}

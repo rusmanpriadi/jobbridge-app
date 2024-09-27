@@ -2,7 +2,6 @@
    {
      id: "m5gr84i9",
      status: "Belum diunggah",
-   
      jenisBerkas:
        "Surat lamaran yang diajukan kepada direktur utamarumah sakit pendidikan Universitas Hasanuddin Surat lamaran yang diajukan kepada direktur (pdf)",
    },

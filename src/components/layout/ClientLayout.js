@@ -4,12 +4,19 @@ import React, { useState } from "react";
 import ClientSidebar from "../sidebar/ClientSidebar";
 import NavbarClient from "../navbar/NavbarClient";
 import { usePathname } from "next/navigation";
+import Footer from "../footer";
 
 const ClientLayout = ({ children }) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const pathname = usePathname();
-const path = ["/user/home", "/user/berkas", "/user/list-formasi", "/user/data-diri", "/user/resume"];
-    const isHomePath = path.includes(pathname);
+  const path = [
+    "/user/home",
+    "/user/berkas",
+    "/user/list-formasi",
+    "/user/data-diri",
+    "/user/resume",
+  ];
+  const isHomePath = path.includes(pathname);
   return (
     <>
       <div className="flex h-screen overflow-hidden">
@@ -22,15 +29,16 @@ const path = ["/user/home", "/user/berkas", "/user/list-formasi", "/user/data-di
           />
         )}
         {/* <ClientSidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
-        <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden">
-          <NavbarClient
-            sidebarOpen={sidebarOpen}
-            setSidebarOpen={setSidebarOpen}
-          />
-          <main className="z-30 mx-auto w-full">{children}</main>
+        <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden justify-between">
+          <section>
+            <NavbarClient
+              sidebarOpen={sidebarOpen}
+              setSidebarOpen={setSidebarOpen}
+            />
+            <main className="z-30 mx-auto w-full pb-16">{children}</main>
+          </section>
+          <Footer />
         </div>
-        {/* </>
-        )} */}
       </div>
     </>
   );
