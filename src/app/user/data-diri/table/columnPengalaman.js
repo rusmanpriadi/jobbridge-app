@@ -11,14 +11,8 @@ import {
 
 import { Button } from "../../../../components/ui/button";
 
-import {
-  HiOutlineCloudArrowUp,
-  HiOutlineCheckCircle,
-  HiOutlineExclamationTriangle  ,
-} from "react-icons/hi2";
-import { Label } from "../../../../components/ui/label";
 
-  const columns = [
+  const ColumnPengalaman = [
     {
       accessorKey: "No",
       header: () => <div className="">No</div>,
@@ -130,4 +124,4 @@ import { Label } from "../../../../components/ui/label";
     },
   ];
 
-export default columns
+export default ColumnPengalaman

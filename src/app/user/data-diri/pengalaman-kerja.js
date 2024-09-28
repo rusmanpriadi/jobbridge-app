@@ -11,7 +11,7 @@ import {
 } from "../../../components/ui/table";
 import { Input } from "../../../components/ui/input";
 import { Label } from "../../../components/ui/label";
-import columns from "./table/column";
+import ColumnPengalaman from "./table/columnPengalaman";
 import data from "./table/data";
 import {
   flexRender,
@@ -31,7 +31,7 @@ const PengalamanKerja = () => {
 
   const table = useReactTable({
     data,
-    columns,
+    columns: ColumnPengalaman,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     getCoreRowModel: getCoreRowModel(),

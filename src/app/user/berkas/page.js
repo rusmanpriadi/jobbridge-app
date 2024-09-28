@@ -54,8 +54,11 @@ const Berkas = () => {
   return (
     <ClientLayout className="w-full ">
       <div className="px-8 py-5">
-        <div>
-          <h4>Upload Berkas</h4>
+        <div className="flex flex-col">
+          <p className="text-xl font-semibold">Upload Berkas</p>
+          <span className="text-xs text-slate-600">
+            Here you can edit your information
+          </span>
         </div>
         <div className="flex items-center py-4 text-xs">
           {/* <Input
@@ -66,7 +69,6 @@ const Berkas = () => {
             }
             className="max-w-sm"
           /> */}
-        
         </div>
         <div className="rounded-md border">
           <Table>

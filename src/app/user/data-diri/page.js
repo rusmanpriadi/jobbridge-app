@@ -1,10 +1,7 @@
 import ClientLayout from "../../../components/layout/ClientLayout";
 import React from "react";
 import { Button } from "../../../components/ui/button";
-import {
-  Card,
-
-} from "../../../components/ui/card";
+import { Card } from "../../../components/ui/card";
 
 import {
   Tabs,
@@ -18,6 +15,7 @@ import FormPhoto from "./photo";
 import Alamat from "./alamat";
 import FormPendidikan from "./pendidikan";
 import PengalamanKerja from "./pengalaman-kerja";
+import Pelatihan from "./pelatihan";
 
 export const metadata = {
   title: "Profile",
@@ -48,17 +46,18 @@ const DataDIri = () => {
                 Pelatihan
               </TabsTrigger>
             </TabsList>
-            <Button
-              variant="outline"
-              size="none"
-              className="save-button save-button hidden bg-greent hover:bg-greent/85 hover:text-white ms-3 text-white text-xs px-8 py-2 shadow-lg "
-              aria-hidden="true"
-            >
-              Save
-            </Button>
+            <TabsContent value="profile">
+              <Button
+                variant="outline"
+                size="none"
+                className="bg-greent hover:bg-greent/85 hover:text-white text-white text-xs px-8 ms-3 py-2 shadow-sm"
+              >
+                Save
+              </Button>
+            </TabsContent>
           </div>
           <TabsContent value="profile" className="w-full col-span-2">
-            <div className="w-full grid grid-cols-1 sm:grid-cols-3   gap-4">
+            <div className="w-full grid grid-cols-1 sm:grid-cols-3 mt-4  gap-4">
               <BasicInfo />
               <FormPhoto />
             </div>
@@ -74,7 +73,9 @@ const DataDIri = () => {
             </Card>
           </TabsContent>
           <TabsContent value="pelatihan">
-            <Card> Sertifikat Pelatihan</Card>
+            <Card>
+              <Pelatihan />
+            </Card>
           </TabsContent>
         </Tabs>
       </div>
