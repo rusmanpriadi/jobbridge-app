@@ -22,11 +22,11 @@ const Navbar = (props) => {
   const navbarData = [
     {
       name: "Dashboard",
-      path: "/dashboard",
+      path: "/admin/dashboard",
     },
     {
       name: "Pelamar",
-      path: "/pelamar",
+      path: "/admin/pelamar",
     },
   ];
   const title = navbarData[pathname === navbarData[0].path ? 0 : 1].name;

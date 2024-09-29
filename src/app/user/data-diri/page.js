@@ -26,12 +26,12 @@ const DataDIri = () => {
   return (
     <ClientLayout>
       <div className="sm:px-8 px-5 mt-5 w-full">
-        <div className="flex flex-col">
+        {/* <div className="flex flex-col">
           <p className="text-xl font-semibold">Pelamar Information</p>
           <span className="text-xs text-slate-600">
             Here you can edit your information
           </span>
-        </div>
+        </div> */}
 
         <Tabs defaultValue="profile" className="mt-5">
           <div className="flex items-center justify-between">
