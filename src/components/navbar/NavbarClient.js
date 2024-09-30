@@ -78,7 +78,7 @@ const NavbarClient = (props) => {
         Cookies.remove("role");
 
         // Redirect ke halaman login
-        router.push("/login");
+        router.push("/");
       }
     } catch (error) {
       console.error("Error saat logout:", error);
