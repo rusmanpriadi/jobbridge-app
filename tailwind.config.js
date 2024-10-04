@@ -26,6 +26,7 @@ module.exports = {
         bluet: "#0088E4",
         greent: "#2DB976",
         redt: "#920000",
+        lightkblue: "#F6FAFF",
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

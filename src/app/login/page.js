@@ -37,7 +37,8 @@ const Login = () => {
         {
           nik,
           password,
-        }
+        },
+       
       );
 
       // console.log(response);

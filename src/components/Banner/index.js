@@ -1,10 +1,13 @@
 import Image from "next/image";
+import MultipleItems from "./Companies";
+import Companies from "./Companies";
+import CardFormasi from "./CardFormasi";
 
 const Banner = () => {
   return (
-    <div id="home-section" className="bg-lightkblue">
-      <div className="mx-auto max-w-7xl  sm:pb-24 px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 space-x-1">
+    <div id="home-section" className="">
+      <div className="  bg-lightkblue">
+        <div className="grid grid-cols-1 lg:grid-cols-12 space-x-1 mx-auto max-w-7xl  sm:pb-24 px-6">
           <div className="col-span-6 flex flex-col justify-evenly">
             <div className="flex gap-2 mx-auto lg:mx-0">
               <Image
@@ -19,7 +22,9 @@ const Banner = () => {
             </div>
             <h1 className="text-midnightblue text-3xl sm:text-4xl font-semibold text-center lg:text-start lh-120 pt-5 lg:pt-0 text-red-500">
               Seleksi Penerimaan Karyawan{" "}
-              <span className="text-black">Rumah Sakit Universitas Hasanuddin 2024.</span>
+              <span className="text-black">
+                Rumah Sakit Universitas Hasanuddin 2024.
+              </span>
             </h1>
             <h3 className="text-charcoal text-lg font-normal text-center lg:text-start opacity-75 pt-5 lg:pt-0">
               Build skills with our courses and mentor from world-class
@@ -98,6 +103,10 @@ const Banner = () => {
             />
           </div>
         </div>
+      </div>
+      <div className="max-w-7xl mx-auto sm:pb-24 px-6">
+        <Companies />
+        <CardFormasi />
       </div>
     </div>
   );
