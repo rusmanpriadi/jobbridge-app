@@ -106,6 +106,7 @@ const Banner = () => {
       </div>
       <div className="max-w-7xl mx-auto sm:pb-24 px-6">
         <Companies />
+      
         <CardFormasi />
       </div>
     </div>
