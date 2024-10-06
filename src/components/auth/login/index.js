@@ -6,7 +6,7 @@ import Cookies from "js-cookie";
 
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { Button } from "../../components/ui/button";
+import { Button } from "../../ui/button";
 import { NextResponse } from "next/server";
 import {
   Card,
@@ -14,10 +14,13 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../../components/ui/card";
-import { Input } from "../../components/ui/input";
-import { Label } from "../../components/ui/label";
-import ClientLayout from "../../components/layout/ClientLayout";
+} from "../../ui/card";
+import { Input } from "../../ui/input";
+import { Label } from "../../ui/label";
+import ClientLayout from "../../layout/ClientLayout";
+import { HiOutlineCheckCircle } from "react-icons/hi2";
+
+
 export const description =
   "A sign up form with first name, last name, email and password inside a card. There's an option to sign up with GitHub and a link to login if you already have an account";
 
@@ -38,8 +41,7 @@ const Login = () => {
         {
           nik,
           password,
-        },
-       
+        }
       );
 
       // console.log(response);
@@ -70,14 +72,50 @@ const Login = () => {
     }
   };
   return (
-    <div className="flex min-h-screen items-center justify-center p-6">
-      <Card className="mx-auto max-w-5xl flex">
-        <div className=" w-[350px] p-6 md:block hidden pr-10">
-          <div className="bg-ungut bg-indigo-600 text-white h-full rounded-2xl">
-            Informasi Untuk login
+    <div className="py-2 ">
+      <Card className=" w-full grid flex border-none shadow-none">
+        <div className="w-[500px] px-1 md:block hidden">
+          <div className="bg-indigo-500 text-white h-full rounded-2xl p-4 shadow-lg">
+            <h2 className="text-lg font-extrabold mb-4">
+              Information!
+            </h2>
+            <ul className="space-y-2 text-xs">
+              <li className="flex items-start">
+                <span className="inline-block  rounded-full p-1 text-white mr-2">
+                 <HiOutlineCheckCircle className="w-5 h-5" />
+                </span>
+                Pastikan NIK yang dimasukkan sesuai dengan data yang terdaftar.
+              </li>
+              <li className="flex items-start">
+                <span className="inline-block  rounded-full p-1 text-white mr-2">
+                 <HiOutlineCheckCircle className="w-5 h-5" />
+                </span>
+                Gunakan password yang benar sesuai dengan yang telah
+                didaftarkan.
+              </li>
+              <li className="flex items-start">
+                <span className="inline-block  rounded-full p-1 text-white mr-2">
+                 <HiOutlineCheckCircle className="w-5 h-5" />
+                </span>
+                Lupa password? Klik link "Forgot your password?" untuk
+                memulihkan.
+              </li>
+              <li className="flex items-start">
+                <span className="inline-block  rounded-full p-1 text-white mr-2">
+                 <HiOutlineCheckCircle className="w-5 h-5" />
+                </span>
+                Setelah login, Anda akan diarahkan ke dashboard pelamar.
+              </li>
+              <li className="flex items-start">
+                <span className="inline-block  rounded-full p-1 text-white mr-2">
+                 <HiOutlineCheckCircle className="w-5 h-5" />
+                </span>
+                Hubungi admin jika mengalami kesulitan login.
+              </li>
+            </ul>
           </div>
         </div>
-        <div>
+        <div className="w-full">
           <CardHeader>
             <CardTitle className="text-2xl">Login</CardTitle>
             <CardDescription>
@@ -86,7 +124,7 @@ const Login = () => {
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit}>
-              <div className="grid gap-4">
+              <div className="grid gap-1">
                 <div className="grid gap-2">
                   <Label htmlFor="nik">NIK</Label>
                   <Input
@@ -103,7 +141,7 @@ const Login = () => {
                     <Label htmlFor="password">Password</Label>
                     <Link
                       href="#"
-                      className="ml-auto inline-block text-sm underline"
+                      className="ml-auto inline-block text-xs underline"
                     >
                       Forgot your password?
                     </Link>
@@ -117,7 +155,7 @@ const Login = () => {
                   />
                 </div>
                 {error && <p>{error}</p>}
-                <Button type="submit" className="w-full">
+                <Button type="submit" className="w-full mt-4">
                   {isLoading ? (
                     <div className="flex items-center justify-center">
                       <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-white mr-2"></div>
@@ -128,12 +166,7 @@ const Login = () => {
                   )}
                 </Button>
               </div>
-              <div className="mt-4 text-center text-sm">
-                Don&apos;t have an account?{" "}
-                <Link href="/register" className="underline">
-                  Sign up
-                </Link>
-              </div>
+              
             </form>
           </CardContent>
         </div>

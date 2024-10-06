@@ -1,10 +1,6 @@
-
-
-import ClientLayout from "@/components/layout/ClientLayout";
 import Banner from "../components/Banner";
 import NavbarBanner from "../components/Banner/nav";
-
-
+import Footer from "../components/footer";
 
 export const metadata = {
   title: "Halaman utama",
@@ -12,12 +8,11 @@ export const metadata = {
 };
 
 export default function Home() {
-  
   return (
     <div className="w-full">
       <NavbarBanner />
       <Banner />
-     
+      <Footer />
     </div>
   );
 }

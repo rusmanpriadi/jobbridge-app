@@ -24,8 +24,16 @@ import { Button } from "../ui/button";
 import Image from "next/image";
 const CardFormasi = () => {
   return (
-    <div className="grid grid-cols-2 w-full px-10 mt-16">
-      <Image src="/images/poster.jpg" alt="poster" width={550} height={600} className="rounded-3xl" />
+    <div className="grid grid-cols-1 sm:grid-cols-2 space-y-5 w-full sm:px-10 mt-16 px-3 ">
+      <div>
+        <Image
+          src="/images/poster.jpg"
+          alt="poster"
+          width={550}
+          height={600}
+          className="rounded-3xl"
+        />
+      </div>
       <Card x-chunk="dashboard-07-chunk-0" className="w-full">
         <CardHeader>
           <CardTitle>Formasi Details</CardTitle>
@@ -34,7 +42,7 @@ const CardFormasi = () => {
           </CardDescription>
         </CardHeader>
         <CardContent className="mt-6">
-          <div className="grid gap-6">
+          <div className="grid gap-6 h-full ">
             <div className="grid gap-3">
               <Label htmlFor="name">Name Formasi</Label>
               <Select>
@@ -66,7 +74,7 @@ const CardFormasi = () => {
                 className="min-h-32"
               />
             </div>
-            <Button>Daftar</Button>
+            <Button className="w-full bottom-0 ">Daftar</Button>
           </div>
         </CardContent>
       </Card>

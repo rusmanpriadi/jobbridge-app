@@ -4,16 +4,17 @@ import React, { useState } from "react";
 import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { Button } from "../../components/ui/button";
+import { Button } from "../../ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "../../components/ui/card";
-import { Input } from "../../components/ui/input";
-import { Label } from "../../components/ui/label";
+} from "../../ui/card";
+import { Input } from "../../ui/input";
+import { Label } from "../../ui/label";
+import { HiOutlineCheckCircle } from "react-icons/hi2";
 
 export const description =
   "A sign up form with first name, last name, email and password inside a card. There's an option to sign up with GitHub and a link to login if you already have an account";
@@ -64,16 +65,53 @@ const Register = () => {
     }
   };
   return (
-    <div className="flex min-h-screen items-center justify-center p-6">
-      <Card className="mx-auto max-w-5xl flex">
-        <div className=" w-[350px] p-6 md:block hidden pr-10">
-          <div className="bg-ungut bg-indigo-600 text-white h-full rounded-2xl">
-            Informasi Untuk Register
+    <div className="py-2">
+      <Card className="w-full grid flex border-none shadow-none">
+        <div className=" w-[320px] px-1 md:block hidden ">
+          <div className=" bg-indigo-500 text-white h-full rounded-2xl p-2 shadow-lg">
+            <h2 className="text-lg font-extrabold mb-4 ms-4 mt-3">
+              Information!
+            </h2>
+            <ul className="space-y-3 text-xs p-2">
+              <li className="flex items-start">
+             <span className="inline-block  rounded-full p-1 text-white mr-2">
+                 <HiOutlineCheckCircle className="w-5 h-5" />
+                </span>
+                Gunakan NIK yang valid dan sesuai dengan data kependudukan.
+              </li>
+              <li className="flex items-start">
+             <span className="inline-block  rounded-full p-1 text-white mr-2">
+                 <HiOutlineCheckCircle className="w-5 h-5" />
+                </span>
+                Masukkan email aktif yang akan digunakan untuk verifikasi dan
+                informasi penting.
+              </li>
+              <li className="flex items-start">
+             <span className="inline-block  rounded-full p-1 text-white mr-2">
+                 <HiOutlineCheckCircle className="w-5 h-5" />
+                </span>
+                Buat password yang kuat untuk melindungi akun Anda. Gunakan
+                kombinasi huruf, angka, dan simbol.
+              </li>
+              <li className="flex items-start">
+             <span className="inline-block  rounded-full p-1 text-white mr-2">
+                 <HiOutlineCheckCircle className="w-5 h-5" />
+                </span>
+                Pastikan password dan konfirmasi password sama sebelum submit.
+              </li>
+              <li className="flex items-start">
+             <span className="inline-block  rounded-full p-1 text-white mr-2">
+                 <HiOutlineCheckCircle className="w-5 h-5" />
+                </span>
+                Setelah registrasi, Anda akan diarahkan ke halaman login untuk
+                mengakses akun.
+              </li>
+            </ul>
           </div>
           {error && <p style={{ color: "red" }}>{error}</p>}
           {success && <p style={{ color: "green" }}>{success}</p>}
         </div>
-        <div className="">
+        <div className="w-full">
           <CardHeader>
             <CardTitle className="text-xl">Register</CardTitle>
             <CardDescription>
@@ -122,6 +160,7 @@ const Register = () => {
                   id="password"
                   type="password"
                   value={password}
+                  placeholder="Min. 8 karakter"
                   onChange={(e) => setPassword(e.target.value)}
                 />
               </div>
@@ -131,6 +170,7 @@ const Register = () => {
                   id="konfpassword"
                   type="password"
                   name="password_confirmation"
+                  placeholder="Password yang sama"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
                 />
@@ -139,12 +179,7 @@ const Register = () => {
                 Create an account
               </Button>
             </form>
-            <div className="mt-4 text-center text-sm">
-              Already have an account?{" "}
-              <Link href="/login" className="underline">
-                Sign in
-              </Link>
-            </div>
+          
           </CardContent>
         </div>
       </Card>
