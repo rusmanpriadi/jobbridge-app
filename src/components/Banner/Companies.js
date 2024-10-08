@@ -77,23 +77,30 @@ export default class MultipleItems extends Component {
         };
 
         return (
-
-            <div className='text-center mt-28'>
-                <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
-                    <h2 className="text-slate-600 text-2xl font-semibold">Trusted by companies of all sizes</h2>
-                    <div className="py-14">
-                        <Slider {...settings}>
-                            {data.map((item, i) =>
-                                <div key={i}>
-                                    <Image src={item.imgSrc} alt={item.imgSrc} width={116} height={36} />
-                                </div>
-                            )}
-                        </Slider>
+          <div className="text-center mt-28">
+            <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+              <h2 className="text-slate-600 text-2xl font-semibold">
+                Trusted by companies of all sizes
+              </h2>
+              <div className="py-14">
+                <Slider {...settings}>
+                  {data.map((item, i) => (
+                    <div key={i}>
+                      <Image
+                        src={item.imgSrc}
+                        alt={item.imgSrc}
+                        width={116}
+                        height={36}
+                        style={{ width: "auto", height: "auto" }}
+                        className="object-contain"
+                      />
                     </div>
-                    <hr />
-                </div>
+                  ))}
+                </Slider>
+              </div>
+              <hr />
             </div>
-
-        )
+          </div>
+        );
     }
 }

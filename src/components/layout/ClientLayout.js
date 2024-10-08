@@ -29,7 +29,7 @@ const ClientLayout = ({ children }) => {
           />
         )}
         {/* <ClientSidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} /> */}
-        <div className="relative flex flex-1 flex-col overflow-y-auto overflow-x-hidden justify-between">
+        <div className="relative w-full flex flex-1 flex-col overflow-y-auto overflow-x-hidden justify-between">
           <section>
             <NavbarClient
               sidebarOpen={sidebarOpen}

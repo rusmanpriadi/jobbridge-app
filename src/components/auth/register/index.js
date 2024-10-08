@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { Button } from "../../ui/button";
@@ -39,15 +38,16 @@ const Register = () => {
 
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/register`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/register`,
         {
           nik,
           name,
           email,
           password,
-          password_confirmation: confirmPassword,
+          confirmPassword,
         }
       );
+      console.log(response);
 
       if (response.status === 201) {
         setSuccess("Registrasi berhasil! Silakan login.");
@@ -57,17 +57,31 @@ const Register = () => {
         setPassword("");
         setConfirmPassword("");
         setError("");
-        router.push("/login"); // Redirect ke halaman login setelah sukses
+        router.push("/"); // Redirect ke halaman login setelah sukses
       }
     } catch (error) {
-      setError("Registrasi gagal. Silakan coba lagi.");
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        setError(
+          error.response.data.message || "Registrasi gagal. Silakan coba lagi."
+        );
+      } else if (error.request) {
+        // The request was made but no response was received
+        setError(
+          "Tidak ada respon dari server. Periksa koneksi internet Anda."
+        );
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        setError("Terjadi kesalahan. Silakan coba lagi.");
+      }
       console.error("Error:", error);
     }
   };
   return (
     <div className="py-2">
-      <Card className="w-full grid flex border-none shadow-none">
-        <div className=" w-[320px] px-1 md:block hidden ">
+      <Card className="w-full  flex border-none shadow-none">
+        <div className=" w-[340px] px-1 md:block hidden ">
           <div className=" bg-indigo-500 text-white h-full rounded-2xl p-2 shadow-lg">
             <h2 className="text-lg font-extrabold mb-4 ms-4 mt-3">
               Information!

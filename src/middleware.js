@@ -2,16 +2,18 @@ import { NextResponse } from "next/server";
 
 export function middleware(req) {
   // Mendapatkan token dan role dari cookies
-  const token = req.cookies.get("token").value;
-  const role = req.cookies.get("role").value;
+  const refreshTokenCookie = req.cookies.get("refreshToken");
+  const roleCookie = req.cookies.get("role");
+
+  const token = refreshTokenCookie ? refreshTokenCookie.value : null;
+  const role = roleCookie ? roleCookie.value : null;
 
   const { pathname } = req.nextUrl;
 
   // Jika tidak ada token, redirect ke halaman login
-
   if (!token) {
     console.log("Tidak ada token, redirect ke login.");
-    return NextResponse.redirect(new URL("/login", req.url));
+    return NextResponse.redirect(new URL("/", req.url));
   }
 
   if (pathname.startsWith("/admin") && role !== "admin") {

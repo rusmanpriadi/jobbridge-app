@@ -130,7 +130,7 @@ export const columns = [
       return (
         <div className="flex space-x-2">
           {/* {label && <Badge variant="outline">{label.label}</Badge>} */}
-          <span className="max-w-[120px] truncate font-medium font-semibold text-[12px] text-bluet">
+          <span className="max-w-[120px] truncate font-medium  text-[12px] text-bluet">
             {row.getValue("phone")}
           </span>
         </div>

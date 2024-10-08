@@ -44,11 +44,11 @@ const Navbar = (props) => {
       }
       // Panggil API logout Laravel
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/logout`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/logout`,
         {},
         {
           headers: {
-            Authorization: `Bearer ${token}`, // Sertakan token untuk autentikasi
+            Cookie: `${token}`, // Include token // Sertakan token untuk autentikasi
           },
         }
       );
@@ -59,7 +59,7 @@ const Navbar = (props) => {
         Cookies.remove("role");
 
         // Redirect ke halaman login
-        router.push("/login");
+        router.push("/");
       }
     } catch (error) {
       console.error("Error saat logout:", error);

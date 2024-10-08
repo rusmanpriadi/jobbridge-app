@@ -32,6 +32,7 @@ const CardFormasi = () => {
           width={550}
           height={600}
           className="rounded-3xl"
+          style={{ width: "auto", height: "auto" }}
         />
       </div>
       <Card x-chunk="dashboard-07-chunk-0" className="w-full">

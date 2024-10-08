@@ -57,28 +57,18 @@ const NavbarClient = (props) => {
     setLoading(true); // Mulai loading
 
     try {
-      const token = Cookies.get("token");
+      const token = Cookies.get("refreshToken");
       if (!token) {
         throw new Error("Token tidak tersedia.");
       }
       // Panggil API logout Laravel
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/logout`,
-        {},
-        {
-          headers: {
-            Authorization: `Bearer ${token}`, // Sertakan token untuk autentikasi
-          },
-        }
-      );
+        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/logout`);
 
       if (response.status === 200) {
-        // Hapus token dan role dari Cookies
-        Cookies.remove("token");
-        Cookies.remove("role");
-
-        // Redirect ke halaman login
-        router.push("/");
+       Cookies.remove("refreshToken");
+       Cookies.remove("role");
+       router.push("/");
       }
     } catch (error) {
       console.error("Error saat logout:", error);

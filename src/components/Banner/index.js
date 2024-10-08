@@ -15,6 +15,7 @@ const Banner = () => {
                 alt="check-image"
                 width={20}
                 height={20}
+                
               />
               <h3 className="text-kellygreen text-sm font-semibold text-center lg:text-start">
                 Get 30% off on first enroll

@@ -37,7 +37,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/login`,
+        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/login`,
         {
           nik,
           password,
@@ -45,16 +45,20 @@ const Login = () => {
       );
 
       // console.log(response);
-      if (response.status === 201) {
+      if (response.status === 201) {  
         // Pastikan token ada di dalam respons
-        let token = response.data.token;
+        let token = response.data.data.refreshToken;
         let role = response.data.data.role;
 
         if (!token) {
           throw new Error("Token tidak ditemukan dalam respons API.");
         }
         // Simpan token dan role ke cookie agar middleware bisa mengaksesnya
-        Cookies.set("token", token, { expires: 1, path: "/", secure: true }); // token berlaku selama 1 hari
+        Cookies.set("refreshToken", token, {
+          expires: 1,
+          path: "/",
+          secure: true,
+        }); // token berlaku selama 1 hari
         Cookies.set("role", role, { expires: 1, path: "/", secure: true });
         // Redirect sesuai role
         if (role === "admin") {
@@ -73,7 +77,7 @@ const Login = () => {
   };
   return (
     <div className="py-2 ">
-      <Card className=" w-full grid flex border-none shadow-none">
+      <Card className=" w-full flex border-none shadow-none">
         <div className="w-[500px] px-1 md:block hidden">
           <div className="bg-indigo-500 text-white h-full rounded-2xl p-4 shadow-lg">
             <h2 className="text-lg font-extrabold mb-4">
@@ -124,7 +128,7 @@ const Login = () => {
           </CardHeader>
           <CardContent>
             <form onSubmit={handleSubmit}>
-              <div className="grid gap-1">
+              <div className="grid gap-4">
                 <div className="grid gap-2">
                   <Label htmlFor="nik">NIK</Label>
                   <Input

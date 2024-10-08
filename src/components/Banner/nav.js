@@ -18,6 +18,8 @@ import {
 } from "../../components/ui/dialog";
 import Login from "../auth/login";
 import Register from "../auth/register";
+import { SheetTitle } from "../ui/sheet";
+import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 
 const NavbarBanner = () => {
   const pathname = usePathname();
@@ -35,9 +37,16 @@ const NavbarBanner = () => {
   return (
     <nav className="sticky top-0 z-40 flex w-full border-stroke bg-white px-4 md:px-5 lg:px-10 py-3 h-[76px]">
       <div className="w-full flex items-center justify-between">
-        <Image src="/images/rsuhLogo.png" alt="logo" width={180} height={180} />
+        <Image
+          src="/images/rsuhLogo.png"
+          alt="logo"
+          width={180}
+          height={180}
+           className="object-contain"
+           style={{ width: "auto", height: "auto" }}
+        />
 
-        <ul className="hidden md:flex flex items-center space-x-8 text-sm text-slate-400 font-medium">
+        <ul className="hidden md:flex  items-center space-x-8 text-sm text-slate-400 font-medium">
           {navItems.map((item) => (
             <li key={item.label}>
               <Link
@@ -53,7 +62,7 @@ const NavbarBanner = () => {
             </li>
           ))}
         </ul>
-        <div className="hidden md:flex flex items-center space-x-2">
+        <div className="hidden md:flex items-center space-x-2">
           <Dialog>
             <DialogTrigger asChild>
               <Button
@@ -65,6 +74,12 @@ const NavbarBanner = () => {
               </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[725px]">
+              <DialogTitle>
+                <VisuallyHidden>
+                  <DialogDescription>register des</DialogDescription>
+                </VisuallyHidden>
+              </DialogTitle>
+
               <Login />
             </DialogContent>
           </Dialog>
@@ -79,6 +94,11 @@ const NavbarBanner = () => {
               </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[725px]">
+              <DialogTitle>
+                <VisuallyHidden>
+                  <DialogDescription>register des</DialogDescription>
+                </VisuallyHidden>
+              </DialogTitle>
               <Register />
             </DialogContent>
           </Dialog>
