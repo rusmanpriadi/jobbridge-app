@@ -60,6 +60,7 @@ const Login = () => {
           secure: true,
         }); // token berlaku selama 1 hari
         Cookies.set("role", role, { expires: 1, path: "/", secure: true });
+        Cookies.set("id", response.data.data.id, { expires: 1, path: "/", secure: true });
         // Redirect sesuai role
         if (role === "admin") {
           router.push("/admin/dashboard");

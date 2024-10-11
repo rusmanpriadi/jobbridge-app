@@ -39,7 +39,7 @@ const ClientSidebar = ({ sidebarOpen, setSidebarOpen }) => {
         <div className="no-scrollbar flex flex-col overflow-y-auto duration-300 ease-linear">
           <div className="flex w-full items-center border-b px-3 h-[74px] lg:px-6 justify-between">
             <Link
-              href={"/home"}
+              href={"/user/home"}
               className="flex items-center w-full space-x-2"
             >
               <Image

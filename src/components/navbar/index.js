@@ -34,39 +34,31 @@ const Navbar = (props) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
-  const handleLogout = async () => {
-    setLoading(true); // Mulai loading
+   const handleLogout = async () => {
+     setLoading(true); // Mulai loading
 
-    try {
-      const token = Cookies.get("token");
-      if (!token) {
-        throw new Error("Token tidak tersedia.");
-      }
-      // Panggil API logout Laravel
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/logout`,
-        {},
-        {
-          headers: {
-            Cookie: `${token}`, // Include token // Sertakan token untuk autentikasi
-          },
-        }
-      );
+     try {
+       const token = Cookies.get("refreshToken");
+       if (!token) {
+         throw new Error("Token tidak tersedia.");
+       }
+       // Panggil API logout Laravel
+       const response = await axios.post(
+         `${process.env.NEXT_PUBLIC_API_URL}/api/auth/logout`
+       );
 
-      if (response.status === 200) {
-        // Hapus token dan role dari Cookies
-        Cookies.remove("token");
-        Cookies.remove("role");
+       if (response.status === 200) {
+         Cookies.remove("refreshToken");
+         Cookies.remove("role");
+         router.push("/");
+       }
+     } catch (error) {
+       console.error("Error saat logout:", error);
+     } finally {
+       setLoading(false); // Selesai loading
+     }
+   };
 
-        // Redirect ke halaman login
-        router.push("/");
-      }
-    } catch (error) {
-      console.error("Error saat logout:", error);
-    } finally {
-      setLoading(false); // Selesai loading
-    }
-  };
 
   return (
     <nav className="sticky top-0 z-40 flex w-full border-b border-stroke bg-white px-4 py-3 h-[60px]">
