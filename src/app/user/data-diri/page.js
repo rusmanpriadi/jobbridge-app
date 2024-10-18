@@ -18,6 +18,7 @@ import Alamat from "./alamat";
 import FormPendidikan from "./pendidikan";
 import PengalamanKerja from "./pengalaman-kerja";
 import Pelatihan from "./pelatihan";
+import InfoLanjutan from "./infoLanjutan";
 
 // export const metadata = {
 //   title: "Profile",
@@ -26,19 +27,27 @@ import Pelatihan from "./pelatihan";
 
 const DataDIri = () => {
   const [basicInfoData, setBasicInfoData] = useState({});
-  const [alamatData, setAlamatData] = useState({});
+  const [infoLanjutan, setInfoLanjutan] = useState({});
   const [pendidikanData, setPendidikanData] = useState({});
+  const [photoData, setPhotoData] = useState({});
   
   // Fungsi untuk handle save semua data
   const handleSave = async () => {
     try {
       // Gabungkan semua data dari form
       const combinedData = {
-        ...basicInfoData, // Data dari BasicInfo
-        ...alamatData, // Data dari Alamat
-        ...pendidikanData, // Data dari Pendidikan
+        ...basicInfoData,
+        ...infoLanjutan,
+        ...pendidikanData,
+        ...photoData
       };
 
+       console.log("Combined Data:", combinedData);
+       console.log(
+         "PUT URL:",
+         `${process.env.NEXT_PUBLIC_API_URL}/api/pelamar/${Cookies.get("id")}`
+       );
+       console.log("Token:", Cookies.get("refreshToken"));
       // Kirim data ke server menggunakan axios
       const response = await axios.put(
         `${process.env.NEXT_PUBLIC_API_URL}/api/pelamar/${Cookies.get("id")}`, // asumsikan 'id' ada di basicInfoData
@@ -52,8 +61,19 @@ const DataDIri = () => {
 
       alert("Data saved successfully.");
     } catch (error) {
-      console.error("Error saving data:", error);
-      alert("Failed to save data.");
+      if (error.response) {
+        // The request was made, and the server responded with a status code that falls out of the range of 2xx
+        console.error("Server Error:", error.response.data);
+        alert(`Failed to save data: ${error.response.data.message}`);
+      } else if (error.request) {
+        // The request was made, but no response was received
+        console.error("No Response:", error.request);
+        alert("Failed to save data: No response from the server.");
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.error("Error:", error.message);
+        alert("Failed to save data.");
+      }
     }
   };
   return (
@@ -86,10 +106,13 @@ const DataDIri = () => {
           <TabsContent value="profile" className="w-full col-span-2">
             <div className="w-full grid grid-cols-1 sm:grid-cols-3 mt-4  gap-4">
               <BasicInfo setBasicInfoData={setBasicInfoData} />
-              <FormPhoto />
+              <FormPhoto
+                setPhotoData={setPhotoData}
+                enctype="multipart/form-data"
+              />
             </div>
             <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <Alamat setAlamatData={setAlamatData} />
+              <InfoLanjutan setInfoLanjutan={setInfoLanjutan} />
               <FormPendidikan setPendidikanData={setPendidikanData} />
             </div>
           </TabsContent>

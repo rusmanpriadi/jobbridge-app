@@ -25,6 +25,7 @@ import {
 import axios from "axios";
 import Cookies from "js-cookie";
 
+
 const BasicInfo = ({ setBasicInfoData }) => {
   const idPelamar = Cookies.get("id");
   const [startDate, setStartDate] = useState(new Date());
@@ -49,10 +50,10 @@ const BasicInfo = ({ setBasicInfoData }) => {
         setNik(data.nik);
         setName(data.name);
         setEmail(data.email);
-        setJenisKelamin(data.pelamar.jenis_kelamin);
-        setNomorTelepon(data.pelamar.nomor_tlp);
-        setTempatLahir(data.pelamar.tempat_lahir);
-        setStartDate(new Date(data.pelamar.tgl_lahir));
+        setJenisKelamin(data.pelamar?.jenis_kelamin ?? "");
+        setNomorTelepon(data.pelamar?.nomor_tlp ?? "");
+        setTempatLahir(data.pelamar?.tempat_lahir ?? "");
+        setStartDate(new Date(data.pelamar?.tgl_lahir ?? 0));
       } catch (error) {
         console.error("Error fetching pelamar data:", error);
       }
@@ -71,7 +72,7 @@ const BasicInfo = ({ setBasicInfoData }) => {
       jenis_kelamin: jenisKelamin,
       nomor_tlp: nomorTelepon,
       tempat_lahir: tempatLahir,
-      tgl_lahir: startDate.toISOString().split("T")[0], // Format the date as "YYYY-MM-DD"
+      tgl_lahir: startDate.toISOString().split("T")[0], 
     });
   }, [nik, name, email, jenisKelamin, nomorTelepon, tempatLahir, startDate, setBasicInfoData]);
   return (

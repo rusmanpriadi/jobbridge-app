@@ -1,60 +1,104 @@
 "use client";
 
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   Card,
   CardHeader,
   CardTitle,
-  CardDescription,
   CardContent,
 } from "../../../components/ui/card";
 import { Button } from "../../../components/ui/button";
 import Image from "next/image";
-import { Input } from "../../../components/ui/input";
+import axios from "axios";
 
-/*************  ✨ Codeium Command ⭐  *************/
-/**
- * FormPhoto component.
- *
- * FormPhoto is a component that renders a form with file input,
- * a preview of the uploaded photo, and buttons to upload and remove the photo.
- *
- * @returns {React.ReactElement} The FormPhoto component.
- */
-/******  2a16d8ce-23c7-45d4-a319-6a55efbe1bc1  *******/const FormPhoto = () => {
-  const [photo, setPhoto] = useState(null);
+const FormPhoto = ({ setPhotoData }) => {
+  const [photo, setPhoto] = useState(null); // Store File object for upload
+  const [photoPreview, setPhotoPreview] = useState(null); // Store base64 for preview
   const fileInputRef = useRef(null);
+  const [uploadError, setUploadError] = useState("");
 
   const handleFileChange = (event) => {
     const file = event.target.files[0];
-    if (file && file.type.substr(0, 5) === "image") {
+    if (file) {
+      if (file.size > 2 * 1024 * 1024) {
+        // Check file size (2 MB)
+        setUploadError("File size exceeds 2 MB.");
+        return;
+      }
+      if (!file.type.startsWith("image/")) {
+        setUploadError("Only image files are allowed.");
+        return;
+      }
+
+      setPhoto(file); // Store the File object
+      setUploadError(""); // Reset error on valid upload
+
+      // Create base64 string for image preview
       const reader = new FileReader();
       reader.onloadend = () => {
-        setPhoto(reader.result);
+        setPhotoPreview(reader.result);
       };
       reader.readAsDataURL(file);
     } else {
       setPhoto(null);
+      setPhotoPreview(null);
     }
   };
 
-  const handleUploadClick = () => {
+  const handleUploadClick = async () => {
     fileInputRef.current.click();
+    
   };
+
+
+   const handleUploadToServer = async () => {
+     if (!photo) {
+       setUploadError("No photo selected.");
+       return;
+     }
+
+     const formData = new FormData();
+     formData.append("photo", photo); // Append the File object
+
+     try {
+       console.log("Uploading photo:", photo); // Debugging
+        await axios.post(
+         `${process.env.NEXT_PUBLIC_API_URL}/api/pelamar/upload`,
+         formData,
+         {
+           headers: {
+             "Content-Type": "multipart/form-data",
+           },
+         }
+
+       );
+       console.log("Photo uploaded successfully!");
+     } catch (error) {
+       setUploadError("Failed to upload photo: " + error.message);
+     }
+   };
+
+
+  useEffect(() => {
+    setPhotoData({
+      photo: photoPreview,
+    });
+  }, [photoPreview, setPhotoData]);
+
   return (
     <Card className="w-full">
       <CardHeader>
         <CardTitle className="text-sm">Foto Profile</CardTitle>
       </CardHeader>
-      <CardContent className="relative space-y-2 w-full  mt-2 flex items-center flex-col justify-between">
+      <CardContent className="relative space-y-2 w-full mt-2 flex items-center flex-col justify-between">
         <div className="relative w-[170px] h-[170px] rounded-full overflow-hidden border-2 border-gray-300">
-          {photo ? (
+          {photoPreview ? (
             <Image
-              src={photo}
+              src={photoPreview}
               alt="Profile Photo"
               layout="fill"
               objectFit="cover"
-              className=" w-full rounded-lg max-w-[170px]  h-[170px] object-cover"
+              className="w-full rounded-lg max-w-[170px] h-[170px] object-cover"
             />
           ) : (
             <div className="flex items-center justify-center w-full h-full bg-gray-100 text-gray-400">
@@ -69,32 +113,43 @@ import { Input } from "../../../components/ui/input";
         <input
           type="file"
           accept="image/*"
+          name="photo"
           onChange={handleFileChange}
           ref={fileInputRef}
-
           className="hidden"
         />
         <div className="flex items-center space-x-4">
-        <Button
-          vaiant="outline"
-          size="none"
-          type="file"
-          className="bg-indigo-500 hover:bg-indigo/85 hover:text-white text-white text-xs px-5 py-2 shadow-lg"
-          onClick={handleUploadClick}
-        >
-          {photo ? "Change Photo" : "Upload Photo"}
-        </Button>
-        {photo && (
           <Button
-            onClick={() => setPhoto(null)}
             variant="outline"
             size="none"
-            className="bg-red-500 hover:bg-indigo/85 hover:text-white text-white text-xs px-5 py-2 shadow-lg"
-            >
-            Remove Photo
+            className="bg-indigo-500 hover:bg-indigo/85 hover:text-white text-white text-xs px-5 py-2 shadow-lg"
+            onClick={handleUploadClick}
+          >
+            {photo ? "Change Photo" : "Upload Photo"}
           </Button>
-        )}
+          {photo && (
+            <Button
+              onClick={() => {
+                setPhoto(null);
+                setPhotoPreview(null);
+              }}
+              variant="outline"
+              size="none"
+              className="bg-red-500 hover:bg-indigo/85 hover:text-white text-white text-xs px-5 py-2 shadow-lg"
+            >
+              Remove Photo
+            </Button>
+          )}
+          <Button
+            variant="outline"
+            size="none"
+            className="bg-green-500 hover:bg-green/85 hover:text-white text-white text-xs px-5 py-2 shadow-lg"
+            onClick={handleUploadToServer}
+          >
+            Upload to Server
+          </Button>
         </div>
+        {uploadError && <p className="text-red-500 text-xs">{uploadError}</p>}
       </CardContent>
     </Card>
   );

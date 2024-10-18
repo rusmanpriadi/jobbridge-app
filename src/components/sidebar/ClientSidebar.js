@@ -47,6 +47,8 @@ const ClientSidebar = ({ sidebarOpen, setSidebarOpen }) => {
                 alt="logo"
                 width={170}
                 height={170}
+                priority={true}
+                style={{width: "auto", height: "auto"}}
               />
               {/* <HiBuildingLibrary className="h-6 w-6"/> */}
               {/* <span className="font-semibold">JobBridge</span> */}
