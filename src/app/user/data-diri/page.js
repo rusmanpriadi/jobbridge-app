@@ -29,17 +29,19 @@ const DataDIri = () => {
   const [basicInfoData, setBasicInfoData] = useState({});
   const [infoLanjutan, setInfoLanjutan] = useState({});
   const [pendidikanData, setPendidikanData] = useState({});
-  const [photoData, setPhotoData] = useState({});
+  // const [photoData, setPhotoData] = useState({});
   
   // Fungsi untuk handle save semua data
   const handleSave = async () => {
+   
+    
     try {
       // Gabungkan semua data dari form
       const combinedData = {
         ...basicInfoData,
         ...infoLanjutan,
         ...pendidikanData,
-        ...photoData
+      
       };
 
        console.log("Combined Data:", combinedData);
@@ -107,8 +109,8 @@ const DataDIri = () => {
             <div className="w-full grid grid-cols-1 sm:grid-cols-3 mt-4  gap-4">
               <BasicInfo setBasicInfoData={setBasicInfoData} />
               <FormPhoto
-                setPhotoData={setPhotoData}
-                enctype="multipart/form-data"
+                // setPhotoData={setPhotoData}
+                // enctype="multipart/form-data"
               />
             </div>
             <div className="w-full grid grid-cols-1 sm:grid-cols-3 gap-4">

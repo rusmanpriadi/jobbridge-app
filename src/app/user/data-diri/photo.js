@@ -10,13 +10,16 @@ import {
 import { Button } from "../../../components/ui/button";
 import Image from "next/image";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const FormPhoto = ({ setPhotoData }) => {
   const [photo, setPhoto] = useState(null); // Store File object for upload
   const [photoPreview, setPhotoPreview] = useState(null); // Store base64 for preview
   const fileInputRef = useRef(null);
   const [uploadError, setUploadError] = useState("");
-
+  const id = Cookies.get("id");
+  console.log("Photo:", photo);
+  
   const handleFileChange = (event) => {
     const file = event.target.files[0];
     if (file) {
@@ -59,6 +62,7 @@ const FormPhoto = ({ setPhotoData }) => {
 
      const formData = new FormData();
      formData.append("photo", photo); // Append the File object
+       formData.append("id", id);
 
      try {
        console.log("Uploading photo:", photo); // Debugging
@@ -79,11 +83,11 @@ const FormPhoto = ({ setPhotoData }) => {
    };
 
 
-  useEffect(() => {
-    setPhotoData({
-      photo: photoPreview,
-    });
-  }, [photoPreview, setPhotoData]);
+  // useEffect(() => {
+  //   setPhotoData({
+  //     photo: photoPreview,
+  //   });
+  // }, [photoPreview, setPhotoData]);
 
   return (
     <Card className="w-full">
